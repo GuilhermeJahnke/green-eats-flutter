@@ -16,6 +16,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> onInit() async {
     await Future<void>.delayed(splashScreenTime);
-    // sharedNavigator.goToHome();
+
+    sharedNavigator.openAuthenticationModule();
   }
 }

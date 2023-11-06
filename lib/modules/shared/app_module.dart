@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../authentication/authentication_module.dart';
 import '../splash/splash_module.dart';
 import 'configs/data/network/app_network_impl.dart';
 import 'configs/env/environment.dart';
@@ -51,6 +52,10 @@ class AppModule extends Module {
         ModuleRoute(
           Modular.initialRoute,
           module: SplashModule(),
-        )
+        ),
+        ModuleRoute(
+          AuthenticationModule.moduleName,
+          module: AuthenticationModule(),
+        ),
       ];
 }

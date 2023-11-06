@@ -1,0 +1,40 @@
+import 'package:flutter_modular/flutter_modular.dart';
+
+import 'authentication_navigator.dart';
+import 'presentation/cubits/forgot_password_cubit.dart';
+import 'presentation/cubits/login_cubit.dart';
+import 'presentation/cubits/register_cubit.dart';
+import 'presentation/pages/forgot_password_page.dart';
+import 'presentation/pages/login_page.dart';
+import 'presentation/pages/register_page.dart';
+
+class AuthenticationModule extends Module {
+  static const moduleName = '/authentication';
+
+  @override
+  List<Bind<Object>> get binds => [
+        // Navigator
+        Bind((i) => AuthenticationNavigator()),
+
+        // Cubits
+        Bind((i) => LoginCubit(navigator: i())),
+        Bind((i) => RegisterCubit()),
+        Bind((i) => ForgotPasswordCubit()),
+      ];
+
+  @override
+  List<ModularRoute> get routes => [
+        ChildRoute(
+          Modular.initialRoute,
+          child: (_, __) => const LoginPage(),
+        ),
+        ChildRoute(
+          RegisterPage.routeName,
+          child: (_, __) => const RegisterPage(),
+        ),
+        ChildRoute(
+          ForgotPasswordPage.routeName,
+          child: (_, __) => const ForgotPasswordPage(),
+        ),
+      ];
+}

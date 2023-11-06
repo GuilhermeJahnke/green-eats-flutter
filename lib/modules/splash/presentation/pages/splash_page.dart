@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../shared/configs/constants/app_assets.dart';
+import '../../../shared/configs/constants/app_colors.dart';
 import '../cubits/splash_cubit.dart';
 
 class SplashPage extends StatefulWidget {
@@ -22,6 +25,13 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: AppColors.splashScreenColor,
+      body: Center(
+        child: SvgPicture.asset(
+          AppAssets.splashScreenLogo,
+        ),
+      ),
+    );
   }
 }
