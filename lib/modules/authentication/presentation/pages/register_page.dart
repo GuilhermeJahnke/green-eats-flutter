@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../authentication_module.dart';
+import '../atomic/templates/register_page_template.dart';
 import '../cubits/register_cubit.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -23,13 +24,15 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocBuilder<RegisterCubit, RegisterState>(
       bloc: cubit,
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Register'),
-          ),
-          body: const Center(
-            child: Text('Register Page'),
-          ),
+        return RegisterPageTemplate(
+          onNameChanged: cubit.onNameChanged,
+          onLastNameChanged: cubit.onLastNameChanged,
+          onCpfChanged: cubit.onCpfChanged,
+          onEmailChanged: cubit.onEmailChanged,
+          onPasswordChanged: cubit.onPasswordChanged,
+          onConfirmPasswordChanged: cubit.onConfirmPasswordChanged,
+          onRegisterTap: cubit.onRegisterTap,
+          onTermsAndConditionsTap: cubit.onTermsAndConditionsTap,
         );
       },
     );

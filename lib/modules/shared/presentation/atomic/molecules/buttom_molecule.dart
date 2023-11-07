@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 enum Buttontype { filled, outlined }
 
-class ButtomMolecule extends StatefulWidget {
-  const ButtomMolecule({
+class ButtonMolecule extends StatefulWidget {
+  const ButtonMolecule({
     super.key,
     required this.type,
     required this.title,
@@ -23,10 +23,10 @@ class ButtomMolecule extends StatefulWidget {
   final TextStyle? textStyle;
 
   @override
-  State<ButtomMolecule> createState() => _ButtomMoleculeState();
+  State<ButtonMolecule> createState() => _ButtonMoleculeState();
 }
 
-class _ButtomMoleculeState extends State<ButtomMolecule> {
+class _ButtonMoleculeState extends State<ButtonMolecule> {
   Border? getBorder() {
     if (!widget.isEnabled) {
       return Border.all(
@@ -63,14 +63,6 @@ class _ButtomMoleculeState extends State<ButtomMolecule> {
     return widget.textStyle ?? const TextStyle(color: Colors.white);
   }
 
-  VoidCallback? getOnTap() {
-    if (widget.isEnabled) {
-      return widget.onTap;
-    }
-
-    return null;
-  }
-
   Widget getWidget() {
     if (widget.isLoading) {
       return const CircularProgressIndicator();
@@ -87,7 +79,7 @@ class _ButtomMoleculeState extends State<ButtomMolecule> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: getOnTap,
+      onTap: widget.isEnabled ? widget.onTap : null,
       borderRadius: BorderRadius.circular(20),
       child: Container(
         height: 50,

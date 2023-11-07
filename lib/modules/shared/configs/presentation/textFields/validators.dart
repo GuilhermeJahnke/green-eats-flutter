@@ -22,7 +22,7 @@ class EmailValidator implements Validator {
   }
 }
 
-class DocumentValidator implements Validator {
+class CpfValidator implements Validator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
@@ -33,7 +33,7 @@ class DocumentValidator implements Validator {
   }
 }
 
-class EmailOrDocumentValidator implements Validator {
+class EmailOrCpfValidator implements Validator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {

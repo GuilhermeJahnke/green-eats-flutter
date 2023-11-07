@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../configs/constants/app_text_style.dart';
 import '../../../configs/presentation/textFields/text_field_type_extension.dart';
 
-enum TextFieldType { none, email, password, document, emailOrDocument }
+enum TextFieldType { none, email, password, cpf, emailOrCpf }
 
 class TextFieldMolecule extends StatefulWidget {
   const TextFieldMolecule({
@@ -68,9 +69,7 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
             color: Colors.red,
           ),
         ),
-        labelStyle: const TextStyle(
-          color: Colors.black,
-        ),
+        labelStyle: AppTextStyle.bodyRegular,
         labelText: widget.label,
         errorText: errorText,
         errorStyle: const TextStyle(

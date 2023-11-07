@@ -9,4 +9,5 @@ class AppAssets {
       '$_svgPath/authentication_page_logo.svg';
   static const String authenticationPageBackground =
       '$_svgPath/authentication_page_background.svg';
+  static const String icEmail = '$_svgPath/ic_email.svg';
 }

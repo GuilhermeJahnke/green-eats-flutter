@@ -4,14 +4,14 @@ class AppTextStyle {
   const AppTextStyle._();
 
   static const TextStyle titleBold = TextStyle(
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: FontWeight.bold,
     fontFamily: 'Roboto',
     color: Colors.black,
   );
 
   static const TextStyle titleRegular = TextStyle(
-    fontSize: 24,
+    fontSize: 20,
     fontFamily: 'Roboto',
     color: Colors.black,
   );

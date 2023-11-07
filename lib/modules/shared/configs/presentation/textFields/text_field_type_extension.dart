@@ -10,10 +10,10 @@ extension TextFieldTypeExtension on TextFieldType {
         return EmailValidator();
       case TextFieldType.password:
         return EmptyValidator();
-      case TextFieldType.document:
-        return DocumentValidator();
-      case TextFieldType.emailOrDocument:
-        return EmailOrDocumentValidator();
+      case TextFieldType.cpf:
+        return CpfValidator();
+      case TextFieldType.emailOrCpf:
+        return EmailOrCpfValidator();
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../authentication_module.dart';
+import '../atomic/templates/forgot_password_page_template.dart';
 import '../cubits/forgot_password_cubit.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -23,13 +24,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return BlocBuilder(
       bloc: cubit,
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Forgot Password'),
-          ),
-          body: const Center(
-            child: Text('Forgot Password Page'),
-          ),
+        return ForgotPasswordPageTemplate(
+          onEmailChanged: cubit.onEmailChanged,
+          onSendTap: cubit.onSendTap,
         );
       },
     );

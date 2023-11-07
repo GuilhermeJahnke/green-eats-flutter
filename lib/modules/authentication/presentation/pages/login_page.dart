@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../authentication_module.dart';
-import '../atomic/templates/login_template.dart';
+import '../atomic/templates/login_page_template.dart';
 import '../cubits/login_cubit.dart';
 
 class LoginPage extends StatefulWidget {

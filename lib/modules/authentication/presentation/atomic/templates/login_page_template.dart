@@ -58,7 +58,7 @@ class LoginPageTemplate extends StatelessWidget {
                       ),
                       const SizedBox(height: 30),
                       TextFieldMolecule(
-                        type: TextFieldType.emailOrDocument,
+                        type: TextFieldType.emailOrCpf,
                         label: AuthenticationStrings.loginPage.emailOrCpf,
                         onChanged: onEmailChanged,
                       ),
@@ -82,7 +82,7 @@ class LoginPageTemplate extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      ButtomMolecule(
+                      ButtonMolecule(
                         title: AuthenticationStrings.loginPage.login,
                         type: Buttontype.filled,
                         onTap: onLoginTap,
