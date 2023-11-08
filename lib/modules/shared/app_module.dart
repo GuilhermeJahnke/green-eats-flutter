@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../authentication/authentication_module.dart';
+import '../main/main_module.dart';
 import '../splash/splash_module.dart';
 import 'configs/data/network/app_network_impl.dart';
 import 'configs/env/environment.dart';
@@ -14,6 +15,8 @@ class AppModule extends Module {
   AppModule(this.environment);
 
   final Environment environment;
+
+  static const routePath = '';
 
   @override
   List<Bind<Object>> get binds => [
@@ -56,6 +59,10 @@ class AppModule extends Module {
         ModuleRoute(
           AuthenticationModule.moduleName,
           module: AuthenticationModule(),
+        ),
+        ModuleRoute(
+          MainModule.routeName,
+          module: MainModule(),
         ),
       ];
 }

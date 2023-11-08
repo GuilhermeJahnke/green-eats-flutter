@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../shared/configs/constants/app_assets.dart';
 import '../../../../shared/configs/constants/app_colors.dart';
@@ -32,7 +31,7 @@ class LoginPageTemplate extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            SvgPicture.asset(
+            Image.asset(
               AppAssets.authenticationPageBackground,
               fit: BoxFit.cover,
             ),

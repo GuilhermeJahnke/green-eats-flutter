@@ -21,7 +21,12 @@ class AuthenticationModule extends Module {
         Bind((i) => AuthenticationNavigator()),
 
         // Cubits
-        Bind((i) => LoginCubit(navigator: i())),
+        Bind(
+          (i) => LoginCubit(
+            navigator: i(),
+            sharedNavigator: i(),
+          ),
+        ),
         Bind((i) => RegisterCubit()),
         Bind((i) => ForgotPasswordCubit(navigator: i())),
         Bind((i) => CheckYourEmailCubit(navigator: i())),
