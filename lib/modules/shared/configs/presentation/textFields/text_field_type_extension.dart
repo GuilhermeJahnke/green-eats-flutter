@@ -14,6 +14,8 @@ extension TextFieldTypeExtension on TextFieldType {
         return CpfValidator();
       case TextFieldType.emailOrCpf:
         return EmailOrCpfValidator();
+      case TextFieldType.search:
+        return SearchValidator();
     }
   }
 }

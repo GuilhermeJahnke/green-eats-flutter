@@ -43,3 +43,10 @@ class EmailOrCpfValidator implements Validator {
     return null;
   }
 }
+
+class SearchValidator implements Validator {
+  @override
+  String? validate(String? value) {
+    return null;
+  }
+}

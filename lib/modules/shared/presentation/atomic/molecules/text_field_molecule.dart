@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../configs/constants/app_colors.dart';
 import '../../../configs/constants/app_text_style.dart';
 import '../../../configs/presentation/textFields/text_field_type_extension.dart';
 
-enum TextFieldType { none, email, password, cpf, emailOrCpf }
+enum TextFieldType { none, email, password, cpf, emailOrCpf, search }
 
 class TextFieldMolecule extends StatefulWidget {
   const TextFieldMolecule({
@@ -43,6 +44,17 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
     return null;
   }
 
+  Widget? getPrefixIcon() {
+    if (widget.type == TextFieldType.search) {
+      return const Icon(
+        Icons.search,
+        color: AppColors.primaryColor,
+      );
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -75,6 +87,7 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
         errorStyle: const TextStyle(
           color: Colors.red,
         ),
+        prefixIcon: getPrefixIcon(),
         suffixIcon: getSuffixIcon(),
       ),
     );
