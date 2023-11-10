@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../shared/configs/constants/app_assets.dart';
 import '../../main_navigator.dart';
 import '../../presentation/cubits/main_cubit.dart';
+import '../../submodules/category/presentation/pages/category_page.dart';
 import '../../submodules/home/presentation/pages/home_page.dart';
 
 sealed class NavBarItem {
@@ -33,8 +34,8 @@ class CategoryItem extends NavBarItem {
   CategoryItem()
       : super(
           svgPath: AppAssets.icCategory,
-          route: 'CategoryPage.routePath',
-          navigation: Modular.get<MainNavigator>().goToHome,
+          route: CategoryPage.routePath,
+          navigation: Modular.get<MainNavigator>().goToCategory,
           badgeCounter: null,
         );
 }

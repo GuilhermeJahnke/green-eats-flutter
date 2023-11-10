@@ -1,18 +1,18 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../presentation/atomic/organisms/wrapper_navbar_organism.dart';
-import 'presentation/cubits/home_cubit.dart';
-import 'presentation/pages/home_page.dart';
+import 'presentation/cubits/category_cubit.dart';
+import 'presentation/pages/category_page.dart';
 
-class HomeModule extends Module {
-  static const String routeName = '/home';
+class CategoryModule extends Module {
+  static const String routeName = '/category';
   static const routePath = WrapperNavbar.routePath + routeName;
 
   @override
   List<Bind<Object>> get binds => [
         // Cubits
         Bind.lazySingleton(
-          (i) => HomeCubit(),
+          (i) => CategoryCubit(),
           export: true,
         ),
       ];
@@ -20,12 +20,12 @@ class HomeModule extends Module {
   @override
   List<ModularRoute> get routes => [
         RedirectRoute(
-          HomeModule.routePath,
-          to: HomePage.routePath,
+          CategoryModule.routePath,
+          to: CategoryPage.routePath,
         ),
         ChildRoute(
-          HomePage.routeName,
-          child: (context, args) => const HomePage(),
+          CategoryPage.routeName,
+          child: (context, args) => const CategoryPage(),
         ),
       ];
 }

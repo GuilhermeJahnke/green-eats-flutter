@@ -5,6 +5,7 @@ import 'domain/entities/nav_bar_item.dart';
 import 'main_navigator.dart';
 import 'presentation/atomic/organisms/wrapper_navbar_organism.dart';
 import 'presentation/cubits/main_cubit.dart';
+import 'submodules/category/category_module.dart';
 import 'submodules/home/home_module.dart';
 
 class MainModule extends Module {
@@ -14,6 +15,7 @@ class MainModule extends Module {
   @override
   List<Module> get imports => [
         HomeModule(),
+        CategoryModule(),
       ];
 
   @override
@@ -25,13 +27,15 @@ class MainModule extends Module {
         Bind.lazySingleton((i) => MainCubit()),
 
         // Navbar routes
-        Bind.lazySingleton<List<NavBarItem>>((i) => [
-              HomeItem(),
-              CategoryItem(),
-              CartItem(),
-              OrderItem(),
-              ProfileItem(),
-            ]),
+        Bind.lazySingleton<List<NavBarItem>>(
+          (i) => [
+            HomeItem(),
+            CategoryItem(),
+            CartItem(),
+            OrderItem(),
+            ProfileItem(),
+          ],
+        ),
       ];
 
   @override
@@ -47,6 +51,12 @@ class MainModule extends Module {
             ModuleRoute(
               HomeModule.routeName,
               module: HomeModule(),
+              transition: TransitionType.noTransition,
+            ),
+            ModuleRoute(
+              CategoryModule.routeName,
+              module: CategoryModule(),
+              transition: TransitionType.noTransition,
             ),
           ],
         ),
