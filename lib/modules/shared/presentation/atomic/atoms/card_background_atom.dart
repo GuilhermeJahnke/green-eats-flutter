@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/utils.dart';
 import 'page_visibility_atom.dart';
 
 class ImageBackgroundAtom extends StatelessWidget {
@@ -20,7 +21,7 @@ class ImageBackgroundAtom extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(20.0)),
         image: DecorationImage(
-          image: autoDetectImage(imagePath),
+          image: Utils.autoDetectImageProvider(imagePath),
           fit: BoxFit.cover,
           alignment: FractionalOffset(
             0.5 + (pageVisibility.pagePosition / 3),
@@ -30,13 +31,5 @@ class ImageBackgroundAtom extends StatelessWidget {
       ),
       child: child,
     );
-  }
-}
-
-ImageProvider autoDetectImage(String imagePath) {
-  if (imagePath.contains('http')) {
-    return NetworkImage(imagePath);
-  } else {
-    return AssetImage(imagePath);
   }
 }

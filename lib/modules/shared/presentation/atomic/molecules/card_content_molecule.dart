@@ -34,58 +34,54 @@ class CardContentMolecule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 15.0),
-      child: Hero(
-        tag: 'hero-tag-${runtimeType.toString()}',
-        child: Material(
-          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-          color: Colors.transparent,
-          child: ImageBackgroundAtom(
-            imagePath: imagePath,
-            pageVisibility: pageVisibility,
-            child: Container(
-              decoration: backgroundImageDecoration ??
-                  const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    gradient: LinearGradient(
-                      begin: FractionalOffset.bottomCenter,
-                      end: FractionalOffset.topCenter,
-                      colors: [
-                        Color.fromARGB(223, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0),
-                      ],
-                    ),
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Material(
+        borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+        color: Colors.transparent,
+        child: ImageBackgroundAtom(
+          imagePath: imagePath,
+          pageVisibility: pageVisibility,
+          child: Container(
+            decoration: backgroundImageDecoration ??
+                const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  gradient: LinearGradient(
+                    begin: FractionalOffset.bottomCenter,
+                    end: FractionalOffset.topCenter,
+                    colors: [
+                      Color.fromARGB(223, 0, 0, 0),
+                      Color.fromARGB(0, 0, 0, 0),
+                    ],
                   ),
-              child: InkWell(
-                onTap: onCardTap,
-                child: Stack(
-                  children: <Widget>[
-                    DecoratedBox(
-                      decoration: contentBackgroundDecoration ??
-                          const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                            gradient: LinearGradient(
-                              begin: FractionalOffset.bottomCenter,
-                              end: FractionalOffset.topCenter,
-                              colors: [
-                                Color(0x00000000),
-                                Color(0xFF000000),
-                              ],
-                            ),
-                          ),
-                    ),
-                    PositionedAtom(
-                      pageVisibility: pageVisibility,
-                      widgets: children.transformEffectChildren(
-                        pageVisibility: pageVisibility,
-                      ),
-                      mainAxisSize: mainAxisSize,
-                      mainAxisAlignment: mainAxisAlignment,
-                      crossAxisAlignment: crossAxisAlignment,
-                    ),
-                  ],
                 ),
+            child: InkWell(
+              onTap: onCardTap,
+              child: Stack(
+                children: <Widget>[
+                  DecoratedBox(
+                    decoration: contentBackgroundDecoration ??
+                        const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          gradient: LinearGradient(
+                            begin: FractionalOffset.bottomCenter,
+                            end: FractionalOffset.topCenter,
+                            colors: [
+                              Color(0x00000000),
+                              Color(0xFF000000),
+                            ],
+                          ),
+                        ),
+                  ),
+                  PositionedAtom(
+                    pageVisibility: pageVisibility,
+                    widgets: children.transformEffectChildren(
+                      pageVisibility: pageVisibility,
+                    ),
+                    mainAxisSize: mainAxisSize,
+                    mainAxisAlignment: mainAxisAlignment,
+                    crossAxisAlignment: crossAxisAlignment,
+                  ),
+                ],
               ),
             ),
           ),

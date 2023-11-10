@@ -18,7 +18,7 @@ class DiscountProductsOrganism extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox.fromSize(
-      size: const Size.fromHeight(200),
+      size: const Size.fromHeight(160),
       child: PageTransformer(
         pageViewBuilder: (context, visibilityResolver) {
           return PageView.builder(
