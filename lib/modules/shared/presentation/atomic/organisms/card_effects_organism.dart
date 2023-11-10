@@ -12,7 +12,7 @@ class DiscountProductsOrganism extends StatelessWidget {
     required this.onCardTap,
   });
 
-  final ValueSetter onCardTap;
+  final ValueSetter<Product> onCardTap;
   final List<Product> itemsList;
 
   @override
