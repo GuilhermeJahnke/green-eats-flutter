@@ -1,8 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../shared/configs/constants/app_assets.dart';
+import '../../../shared/domain/entities/cart_manager.dart';
 import '../../main_navigator.dart';
-import '../../presentation/cubits/main_cubit.dart';
+import '../../submodules/cart/presentation/pages/cart_page.dart';
 import '../../submodules/category/presentation/pages/category_page.dart';
 import '../../submodules/home/presentation/pages/home_page.dart';
 
@@ -44,9 +45,9 @@ class CartItem extends NavBarItem {
   CartItem()
       : super(
           svgPath: AppAssets.icCart,
-          route: 'CartPage.routePath',
-          navigation: Modular.get<MainNavigator>().goToHome,
-          badgeCounter: Modular.get<MainCubit>().state.cartCount,
+          route: CartPage.routePath,
+          navigation: Modular.get<MainNavigator>().goToCart,
+          badgeCounter: CartManager.instance.products.length,
         );
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../shared/domain/entities/cart_manager.dart';
 import '../../presentation/atomic/organisms/wrapper_navbar_organism.dart';
 import 'category_navigator.dart';
 import 'presentation/cubits/category_cubit.dart';
@@ -30,6 +31,7 @@ class CategoryModule extends Module {
           (i) => CategoryDetailCubit(
             category: i.args.data,
             mainNavigator: i(),
+            cartManager: CartManager.instance,
           ),
         ),
       ];

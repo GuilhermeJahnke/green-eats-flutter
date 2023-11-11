@@ -1,12 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../shared/app_module.dart';
+import '../shared/domain/entities/cart_manager.dart';
 import 'domain/entities/nav_bar_item.dart';
 import 'main_navigator.dart';
 import 'presentation/atomic/organisms/wrapper_navbar_organism.dart';
-import 'presentation/cubits/main_cubit.dart';
 import 'presentation/cubits/product_detail_cubit.dart';
 import 'presentation/pages/product_detail_page.dart';
+import 'submodules/cart/cart_module.dart';
 import 'submodules/category/category_module.dart';
 import 'submodules/home/home_module.dart';
 
@@ -18,6 +19,7 @@ class MainModule extends Module {
   List<Module> get imports => [
         HomeModule(),
         CategoryModule(),
+        CartModule(),
       ];
 
   @override
@@ -26,9 +28,11 @@ class MainModule extends Module {
         Bind.lazySingleton((i) => MainNavigator()),
 
         // Cubits
-        Bind.lazySingleton((i) => MainCubit()),
         Bind.factory(
-          (i) => ProductDetailCubit(product: i.args.data),
+          (i) => ProductDetailCubit(
+            product: i.args.data,
+            cartManager: CartManager.instance,
+          ),
         ),
 
         // Navbar routes
@@ -61,6 +65,11 @@ class MainModule extends Module {
             ModuleRoute(
               CategoryModule.routeName,
               module: CategoryModule(),
+              transition: TransitionType.noTransition,
+            ),
+            ModuleRoute(
+              CartModule.routeName,
+              module: CartModule(),
               transition: TransitionType.noTransition,
             ),
           ],

@@ -11,6 +11,8 @@ class AppAssets {
   static const String authenticationPageBackground =
       '$_imagesPath/authentication_page_background.jpg';
 
+  static const String emptyCart = '$_imagesPath/empty_cart.png';
+
   // Assets
   static const String splashScreenLogo = '$_svgPath/splash_logo.svg';
   static const String authenticationPageLogo =
