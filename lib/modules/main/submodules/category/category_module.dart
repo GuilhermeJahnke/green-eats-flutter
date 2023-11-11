@@ -29,6 +29,7 @@ class CategoryModule extends Module {
         Bind.factory(
           (i) => CategoryDetailCubit(
             category: i.args.data,
+            mainNavigator: i(),
           ),
         ),
       ];

@@ -53,4 +53,12 @@ class Utils {
       return 'Boa noite!';
     }
   }
+
+  static String formatWeight(double weight) {
+    if (weight < 1) {
+      return '${(weight * 1000).toInt()}g';
+    } else {
+      return '${weight.toInt()}kg';
+    }
+  }
 }

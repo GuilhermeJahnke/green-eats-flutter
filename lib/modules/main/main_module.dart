@@ -5,6 +5,8 @@ import 'domain/entities/nav_bar_item.dart';
 import 'main_navigator.dart';
 import 'presentation/atomic/organisms/wrapper_navbar_organism.dart';
 import 'presentation/cubits/main_cubit.dart';
+import 'presentation/cubits/product_detail_cubit.dart';
+import 'presentation/pages/product_detail_page.dart';
 import 'submodules/category/category_module.dart';
 import 'submodules/home/home_module.dart';
 
@@ -25,6 +27,9 @@ class MainModule extends Module {
 
         // Cubits
         Bind.lazySingleton((i) => MainCubit()),
+        Bind.factory(
+          (i) => ProductDetailCubit(product: i.args.data),
+        ),
 
         // Navbar routes
         Bind.lazySingleton<List<NavBarItem>>(
@@ -59,6 +64,10 @@ class MainModule extends Module {
               transition: TransitionType.noTransition,
             ),
           ],
+        ),
+        ChildRoute(
+          ProductDetailPage.routeName,
+          child: (_, args) => const ProductDetailPage(),
         ),
       ];
 }

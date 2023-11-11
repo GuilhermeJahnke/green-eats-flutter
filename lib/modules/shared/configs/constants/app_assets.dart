@@ -21,4 +21,5 @@ class AppAssets {
   static const String icCart = '$_svgPath/ic_cart.svg';
   static const String icOrder = '$_svgPath/ic_order.svg';
   static const String icPerson = '$_svgPath/ic_person.svg';
+  static const String icCalendar = '$_svgPath/ic_calendar.svg';
 }

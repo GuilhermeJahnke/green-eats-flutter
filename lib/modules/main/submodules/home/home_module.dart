@@ -12,7 +12,9 @@ class HomeModule extends Module {
   List<Bind<Object>> get binds => [
         // Cubits
         Bind.lazySingleton(
-          (i) => HomeCubit(),
+          (i) => HomeCubit(
+            mainNavigator: i(),
+          ),
           export: true,
         ),
       ];
