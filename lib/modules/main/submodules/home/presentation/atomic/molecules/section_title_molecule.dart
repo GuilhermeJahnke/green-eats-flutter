@@ -7,11 +7,16 @@ class SectionTitleMolecule extends StatelessWidget {
   const SectionTitleMolecule({
     super.key,
     required this.title,
-    required this.onSeeMoreTap,
+    this.onSeeMoreTap,
+    this.showSeeMore = true,
+    this.titleTextStyle = AppTextStyle.subtitleBold,
   });
 
   final String title;
-  final VoidCallback onSeeMoreTap;
+  final VoidCallback? onSeeMoreTap;
+  final bool showSeeMore;
+
+  final TextStyle titleTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +28,16 @@ class SectionTitleMolecule extends StatelessWidget {
           children: [
             Text(
               title,
-              style: AppTextStyle.subtitleBold,
+              style: titleTextStyle,
             ),
             const Spacer(),
-            Text(
-              'Ver mais',
-              style: AppTextStyle.subtitleRegular.copyWith(
-                color: AppColors.primaryColor,
+            Visibility(
+              visible: showSeeMore,
+              child: Text(
+                'Ver mais',
+                style: AppTextStyle.subtitleRegular.copyWith(
+                  color: AppColors.primaryColor,
+                ),
               ),
             ),
           ],

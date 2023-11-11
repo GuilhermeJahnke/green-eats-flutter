@@ -2,74 +2,101 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../shared/domain/entities/category.dart';
-import '../../../../../shared/domain/entities/init_manager.dart';
-import '../../category_navigator.dart';
+import '../../../../../shared/domain/entities/product.dart';
 
-part 'category_state.dart';
+part 'category_detail_state.dart';
 
-class CategoryCubit extends Cubit<CategoryState> with InitManager {
-  CategoryCubit({
-    required this.navigator,
-  }) : super(const CategoryState());
+class CategoryDetailCubit extends Cubit<CategoryDetailState> {
+  CategoryDetailCubit({
+    required this.category,
+  }) : super(
+          const CategoryDetailState(),
+        );
 
-  final CategoryNavigator navigator;
+  final Category category;
 
-  @override
-  void init() {
+  void onInit() {
     emit(
       state.copyWith(
-        categories: const [
-          Category(
+        category: category,
+      ),
+    );
+    _getProducts();
+  }
+
+  Future<void> _getProducts() async {
+    emit(
+      state.copyWith(
+        products: [
+          Product(
             id: 'id',
             title: 'Marmita de carne',
+            price: 22,
+            discount: 15,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de peixe',
+            price: 29,
+            discount: 25,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de frango',
+            price: 25,
+            discount: 30,
             imagePath:
                 'https://img.freepik.com/vetores-premium/ilustracao-da-caixa-de-bento-desenhada-a-mao_23-2148845283.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de carne',
+            price: 22,
+            discount: 15,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de peixe',
+            price: 29,
+            discount: 25,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de frango',
+            price: 25,
+            discount: 30,
             imagePath:
                 'https://img.freepik.com/vetores-premium/ilustracao-da-caixa-de-bento-desenhada-a-mao_23-2148845283.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de carne',
+            price: 22,
+            discount: 15,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de peixe',
+            price: 29,
+            discount: 25,
             imagePath:
                 'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg',
           ),
-          Category(
+          Product(
             id: 'id',
             title: 'Marmita de frango',
+            price: 25,
+            discount: 30,
             imagePath:
                 'https://img.freepik.com/vetores-premium/ilustracao-da-caixa-de-bento-desenhada-a-mao_23-2148845283.jpg',
           ),
@@ -78,9 +105,9 @@ class CategoryCubit extends Cubit<CategoryState> with InitManager {
     );
   }
 
-  void onCategoryTap(Category category) {
-    navigator.goToCategoryDetail(
-      category: category,
-    );
-  }
+  void onProductTap(Product product) {}
+
+  void onCardTap(Product value) {}
+
+  void onAddTap(Product value) {}
 }

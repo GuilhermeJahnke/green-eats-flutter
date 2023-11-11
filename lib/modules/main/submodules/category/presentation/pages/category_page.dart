@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../category_module.dart';
+import '../atomic/templates/category_page_template.dart';
 import '../cubits/category_cubit.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -26,10 +28,14 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
-        child: Text('Category Page'),
-      ),
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      bloc: _cubit,
+      builder: (context, state) {
+        return CategoryPageTemplate(
+          categoryList: state.categories,
+          onCategoryTap: _cubit.onCategoryTap,
+        );
+      },
     );
   }
 }
