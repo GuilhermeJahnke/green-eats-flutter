@@ -13,7 +13,10 @@ class CartModule extends Module {
   List<Bind<Object>> get binds => [
         // Cubits
         Bind.singleton(
-          (i) => CartCubit(cartManager: CartManager.instance),
+          (i) => CartCubit(
+            cartManager: CartManager.instance,
+            mainNavigator: i(),
+          ),
           export: true,
         ),
       ];

@@ -33,16 +33,14 @@ class CategoryCardMolecule extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Flexible(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                title,
-                style: AppTextStyle.titleRegular.copyWith(
-                  color: Colors.white,
-                ),
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(
+              title,
+              style: AppTextStyle.titleRegular.copyWith(
+                color: Colors.white,
               ),
             ),
           ),

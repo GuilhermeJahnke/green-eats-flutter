@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../shared/domain/entities/cart_manager.dart';
 import '../../../../../shared/domain/entities/category.dart';
@@ -8,6 +9,7 @@ import '../../../../../shared/domain/entities/product.dart';
 import '../../../../../shared/mocks/category_mock.dart';
 import '../../../../../shared/mocks/product_mock.dart';
 import '../../../../main_navigator.dart';
+import '../../../cart/presentation/cubits/cart_cubit.dart';
 
 part 'home_state.dart';
 
@@ -19,6 +21,7 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
 
   final MainNavigator mainNavigator;
   final CartManager cartManager;
+  final CartCubit cartCubit = Modular.get<CartCubit>();
 
   @override
   void init() {
@@ -29,6 +32,7 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
         products: productsMockList,
       ),
     );
+    cartCubit.init();
   }
 
   void onCardTap(Product value) {
@@ -49,9 +53,13 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
     );
   }
 
-  void onCategoryTap(Category value) {}
+  void onCategoryTap(Category value) {
+    mainNavigator.openCategoryDetailPage(
+      category: value,
+    );
+  }
 
-  void onSeeMoreCategoryTap() {}
-
-  void onSeeMoreProductTap() {}
+  void onSeeMoreCategoryTap() {
+    mainNavigator.goToCategory();
+  }
 }

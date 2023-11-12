@@ -4,15 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../shared/domain/entities/cart_manager.dart';
 import '../../../../../shared/domain/entities/init_manager.dart';
 import '../../../../../shared/domain/entities/product.dart';
+import '../../../../main_navigator.dart';
 
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> with InitManager {
   CartCubit({
     required this.cartManager,
+    required this.mainNavigator,
   }) : super(const CartState());
 
   final CartManager cartManager;
+  final MainNavigator mainNavigator;
 
   @override
   void init() {
@@ -32,20 +35,14 @@ class CartCubit extends Cubit<CartState> with InitManager {
   }
 
   void onRemoveQuantityTap(Product product) {
-    cartManager.removeProduct(product);
+    cartManager.onRemoveQuantityTap(product);
   }
 
   void onAddQuantityTap(Product product) {
-    cartManager.addProduct(product);
+    cartManager.onAddQuantityTap(product);
   }
 
-  void onConfirmTap() {}
+  void onConfirmTap() {
+    mainNavigator.goToHome();
+  }
 }
-
-// TODO LIST
-// [ ] - initialize cubit in home
-// [ ] - ver pq quando eu adiciono um produto com 10 de quantidade ele vem com 1
-// [ ] - ver pq da dando erro quando vai da home pra categoria
-// [ ] - integrar a navegacao do clique das categorias
-// [ ] - adicionar uma animação de clique nos botões em geral
-// [ ] - unificar quando o mesmo produto for adicionado novamente, para adicionar somente a quantidade escolhida a mais

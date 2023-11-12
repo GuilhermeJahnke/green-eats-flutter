@@ -18,7 +18,6 @@ class HomePageTemplate extends StatelessWidget {
     required this.onAddTap,
     required this.onCardTap,
     required this.onSeeMoreCategoryTap,
-    required this.onSeeMoreProductTap,
     required this.discountProducts,
     required this.categories,
     required this.products,
@@ -30,7 +29,6 @@ class HomePageTemplate extends StatelessWidget {
   final ValueSetter<Product> onAddTap;
   final ValueSetter<Product> onCardTap;
   final VoidCallback onSeeMoreCategoryTap;
-  final VoidCallback onSeeMoreProductTap;
   final List<Product> discountProducts;
   final List<Category> categories;
   final List<Product> products;
@@ -75,9 +73,9 @@ class HomePageTemplate extends StatelessWidget {
                   onCardTap: onCategoryTap,
                 ),
                 const SizedBox(height: 20),
-                SectionTitleMolecule(
+                const SectionTitleMolecule(
                   title: 'Mais vendidos',
-                  onSeeMoreTap: onSeeMoreProductTap,
+                  showSeeMore: false,
                 ),
                 const SizedBox(height: 20),
                 Padding(

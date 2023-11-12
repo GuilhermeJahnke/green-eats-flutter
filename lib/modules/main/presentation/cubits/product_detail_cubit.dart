@@ -44,6 +44,6 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
   }
 
   void onAddCartTap() {
-    cartManager.addProduct(product);
+    cartManager.addProduct(state.product!);
   }
 }

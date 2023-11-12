@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../shared/utils/mixins/context_mixin.dart';
 import '../../home_module.dart';
 import '../atomic/templates/home_page_template.dart';
 import '../cubits/home_cubit.dart';
@@ -35,10 +36,12 @@ class _HomePageState extends State<HomePage> {
           onSearchChanged: _cubit.onSearchChanged,
           onDiscountCardTap: _cubit.onDiscountCardTap,
           onCategoryTap: _cubit.onCategoryTap,
-          onAddTap: _cubit.onAddTap,
+          onAddTap: (product) {
+            _cubit.onAddTap(product);
+            context.showSuccessAddCartSnackBar();
+          },
           onCardTap: _cubit.onCardTap,
           onSeeMoreCategoryTap: _cubit.onSeeMoreCategoryTap,
-          onSeeMoreProductTap: _cubit.onSeeMoreProductTap,
           discountProducts: state.discountProducts,
           categories: state.categories,
           products: state.products,

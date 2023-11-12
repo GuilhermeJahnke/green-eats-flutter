@@ -3,7 +3,7 @@ import 'characteristics_mock.dart';
 
 List<Product> productsMockList = [
   Product(
-    id: 'id',
+    id: '1',
     title: 'Marmita de carne',
     price: 22,
     discount: 15,
@@ -15,7 +15,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '2',
     title: 'Marmita de peixe',
     price: 29,
     discount: 25,
@@ -27,7 +27,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '3',
     title: 'Marmita de frango',
     price: 25,
     discount: 30,
@@ -39,7 +39,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '1',
     title: 'Marmita de carne',
     price: 22,
     discount: 15,
@@ -51,7 +51,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '2',
     title: 'Marmita de peixe',
     price: 29,
     discount: 25,
@@ -63,7 +63,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '3',
     title: 'Marmita de frango',
     price: 25,
     discount: 30,
@@ -75,7 +75,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '1',
     title: 'Marmita de carne',
     price: 22,
     discount: 15,
@@ -87,7 +87,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '2',
     title: 'Marmita de peixe',
     price: 29,
     discount: 25,
@@ -99,7 +99,7 @@ List<Product> productsMockList = [
     characteristics: characteristicsListMock,
   ),
   Product(
-    id: 'id',
+    id: '3',
     title: 'Marmita de frango',
     price: 25,
     discount: 30,
