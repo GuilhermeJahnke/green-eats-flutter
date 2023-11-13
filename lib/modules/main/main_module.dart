@@ -10,6 +10,7 @@ import 'presentation/pages/product_detail_page.dart';
 import 'submodules/cart/cart_module.dart';
 import 'submodules/category/category_module.dart';
 import 'submodules/home/home_module.dart';
+import 'submodules/profile/profile_module.dart';
 
 class MainModule extends Module {
   static const routeName = '/main';
@@ -20,6 +21,7 @@ class MainModule extends Module {
         HomeModule(),
         CategoryModule(),
         CartModule(),
+        ProfileModule(),
       ];
 
   @override
@@ -72,6 +74,11 @@ class MainModule extends Module {
             ModuleRoute(
               CartModule.routeName,
               module: CartModule(),
+              transition: TransitionType.noTransition,
+            ),
+            ModuleRoute(
+              ProfileModule.routeName,
+              module: ProfileModule(),
               transition: TransitionType.noTransition,
             ),
           ],

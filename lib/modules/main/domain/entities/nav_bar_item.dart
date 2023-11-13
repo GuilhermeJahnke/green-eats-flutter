@@ -6,6 +6,7 @@ import '../../main_navigator.dart';
 import '../../submodules/cart/presentation/pages/cart_page.dart';
 import '../../submodules/category/presentation/pages/category_page.dart';
 import '../../submodules/home/presentation/pages/home_page.dart';
+import '../../submodules/profile/presentation/pages/profile_page.dart';
 
 sealed class NavBarItem {
   const NavBarItem({
@@ -66,8 +67,8 @@ class ProfileItem extends NavBarItem {
   ProfileItem()
       : super(
           svgPath: AppAssets.icPerson,
-          route: 'ProfilePage.routePath',
-          navigation: Modular.get<MainNavigator>().goToHome,
+          route: ProfilePage.routePath,
+          navigation: Modular.get<MainNavigator>().goToProfile,
           cartManager: null,
         );
 }

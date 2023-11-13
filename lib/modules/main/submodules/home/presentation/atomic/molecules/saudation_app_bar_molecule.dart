@@ -13,14 +13,17 @@ class SaudationAppBarMolecule extends StatelessWidget {
     return Row(
       children: [
         Container(
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: const Color.fromARGB(255, 205, 211, 207),
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(100),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(12.0),
-            child: Icon(
-              Icons.person,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Utils.autoDetectImage(
+              'https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-700-202768327.jpg',
+              fit: BoxFit.cover,
             ),
           ),
         ),

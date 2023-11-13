@@ -5,16 +5,25 @@ import 'package:intl/intl.dart';
 class Utils {
   const Utils._();
 
-  static Widget autoDetectImage(String imagePath) {
+  static Widget autoDetectImage(String imagePath, {BoxFit? fit}) {
     if (imagePath.contains('https')) {
-      return Image.network(imagePath);
+      return Image.network(
+        imagePath,
+        fit: fit,
+      );
     }
 
     if (imagePath.contains('assets') && !imagePath.contains('svg')) {
-      return Image.asset(imagePath);
+      return Image.asset(
+        imagePath,
+        fit: fit,
+      );
     }
 
-    return SvgPicture.asset(imagePath);
+    return SvgPicture.asset(
+      imagePath,
+      fit: fit ?? BoxFit.contain,
+    );
   }
 
   static ImageProvider autoDetectImageProvider(String imagePath) {

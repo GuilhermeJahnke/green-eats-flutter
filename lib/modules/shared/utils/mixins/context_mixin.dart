@@ -18,6 +18,7 @@ extension BuildContextMixin on BuildContext {
           label: 'Ver carrinho',
           onPressed: Modular.get<MainNavigator>().goToCart,
         ),
+        duration: const Duration(milliseconds: 1000),
       ),
     );
   }

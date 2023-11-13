@@ -12,11 +12,15 @@ class TextFieldMolecule extends StatefulWidget {
     required this.type,
     required this.label,
     required this.onChanged,
+    this.isEnabled = true,
+    this.initialText,
   });
 
   final TextFieldType type;
   final String label;
   final ValueSetter<String?> onChanged;
+  final bool isEnabled;
+  final String? initialText;
 
   @override
   State<TextFieldMolecule> createState() => _TextFieldMoleculeState();
@@ -60,6 +64,7 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: isObscure,
+      enabled: widget.isEnabled,
       onChanged: (value) {
         widget.onChanged(value);
 
@@ -67,6 +72,7 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
           errorText = widget.type.getValidator().validate(value);
         });
       },
+      initialValue: widget.initialText,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
