@@ -39,6 +39,7 @@ class CartCubit extends Cubit<CartState> with InitManager {
   }
 
   void onConfirmTap() {
+    cartManager.removeAllProducts();
     mainNavigator.goToHome();
   }
 }

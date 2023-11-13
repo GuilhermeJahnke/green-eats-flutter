@@ -7,6 +7,7 @@ import 'submodules/cart/cart_module.dart';
 import 'submodules/category/category_module.dart';
 import 'submodules/category/presentation/pages/category_detail_page.dart';
 import 'submodules/home/home_module.dart';
+import 'submodules/orders/orders_module.dart';
 import 'submodules/profile/profile_module.dart';
 
 class MainNavigator {
@@ -45,6 +46,12 @@ class MainNavigator {
   void goToProfile() {
     Modular.to.navigate(
       ProfileModule.routePath,
+    );
+  }
+
+  void goToOrders() {
+    Modular.to.navigate(
+      OrdersModule.routePath,
     );
   }
 }

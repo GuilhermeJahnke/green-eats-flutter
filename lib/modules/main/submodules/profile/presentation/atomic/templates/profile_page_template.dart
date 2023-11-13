@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../shared/configs/constants/app_text_style.dart';
 import '../../../../../../shared/domain/entities/user.dart';
 import '../../../../../../shared/presentation/atomic/molecules/buttom_molecule.dart';
 import '../../../../../../shared/presentation/atomic/molecules/text_field_molecule.dart';
@@ -36,23 +35,10 @@ class ProfilePageTemplate extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20.0),
-                      const Text(
-                        'Editar Perfil',
-                        style: AppTextStyle.titleBold,
-                      ),
-                      const SizedBox(height: 40.0),
-                      PickUserMolecule(
-                        user: user,
-                        onPickImageTap: onPickImageTap,
-                      ),
-                      const SizedBox(height: 10.0),
-                    ],
-                  ),
+                const SizedBox(height: 20.0),
+                PickUserMolecule(
+                  user: user,
+                  onPickImageTap: onPickImageTap,
                 ),
                 const SizedBox(height: 30.0),
                 Padding(

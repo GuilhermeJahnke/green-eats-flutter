@@ -67,4 +67,9 @@ class CartManager extends ChangeNotifier {
     _products[index] = product.copyWith(quantity: product.quantity + 1);
     notifyListeners();
   }
+
+  void removeAllProducts() {
+    _products.clear();
+    notifyListeners();
+  }
 }

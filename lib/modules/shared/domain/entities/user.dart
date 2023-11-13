@@ -1,3 +1,5 @@
+import '../../configs/constants/app_assets.dart';
+
 class User {
   const User({
     required this.id,
@@ -5,8 +7,7 @@ class User {
     required this.lastName,
     required this.email,
     required this.document,
-    this.photoUrl =
-        'https://img.myloview.com/stickers/default-avatar-profile-icon-vector-social-media-user-700-202768327.jpg',
+    this.photoUrl = AppAssets.defaultProfileIcon,
   });
 
   final String id;

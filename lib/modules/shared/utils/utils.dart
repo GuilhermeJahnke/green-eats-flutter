@@ -70,4 +70,9 @@ class Utils {
       return '${weight.toInt()}kg';
     }
   }
+
+  static String formatDate(DateTime date) {
+    final formatter = DateFormat('dd/MM/yyyy - HH:mm');
+    return formatter.format(date);
+  }
 }

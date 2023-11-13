@@ -10,6 +10,7 @@ import 'presentation/pages/product_detail_page.dart';
 import 'submodules/cart/cart_module.dart';
 import 'submodules/category/category_module.dart';
 import 'submodules/home/home_module.dart';
+import 'submodules/orders/orders_module.dart';
 import 'submodules/profile/profile_module.dart';
 
 class MainModule extends Module {
@@ -21,6 +22,7 @@ class MainModule extends Module {
         HomeModule(),
         CategoryModule(),
         CartModule(),
+        OrdersModule(),
         ProfileModule(),
       ];
 
@@ -45,7 +47,7 @@ class MainModule extends Module {
             CartItem(
               cartManager: CartManager.instance,
             ),
-            OrderItem(),
+            OrdersItem(),
             ProfileItem(),
           ],
         ),
@@ -74,6 +76,11 @@ class MainModule extends Module {
             ModuleRoute(
               CartModule.routeName,
               module: CartModule(),
+              transition: TransitionType.noTransition,
+            ),
+            ModuleRoute(
+              OrdersModule.routeName,
+              module: OrdersModule(),
               transition: TransitionType.noTransition,
             ),
             ModuleRoute(

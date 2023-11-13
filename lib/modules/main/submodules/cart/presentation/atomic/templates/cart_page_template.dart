@@ -29,32 +29,29 @@ class CartPageTemplate extends StatelessWidget {
         children: [
           SafeArea(
             child: SingleChildScrollView(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20.0),
-                      const Center(
-                        child: Text(
-                          'Carrinho',
-                          style: AppTextStyle.titleBold,
-                          textAlign: TextAlign.center,
-                        ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20.0),
+                    const Text(
+                      'Carrinho',
+                      style: AppTextStyle.titleBold,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 40.0),
+                    if (products.isEmpty)
+                      const EmptyCartMolecule()
+                    else ...[
+                      CartBuilderItemOrganism(
+                        products: products,
+                        onAddQuantityTap: onAddQuantityTap,
+                        onRemoveQuantityTap: onRemoveQuantityTap,
                       ),
-                      const SizedBox(height: 40.0),
-                      if (products.isEmpty)
-                        const EmptyCartMolecule()
-                      else ...[
-                        CartBuilderItemOrganism(
-                          products: products,
-                          onAddQuantityTap: onAddQuantityTap,
-                          onRemoveQuantityTap: onRemoveQuantityTap,
-                        ),
-                        const SizedBox(height: 90.0),
-                      ],
+                      const SizedBox(height: 90.0),
                     ],
-                  ),
+                  ],
                 ),
               ),
             ),

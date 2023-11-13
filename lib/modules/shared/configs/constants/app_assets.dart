@@ -13,6 +13,11 @@ class AppAssets {
 
   static const String emptyCart = '$_imagesPath/empty_cart.png';
 
+  static const String defaultProfileIcon =
+      '$_imagesPath/default_profile_icon.jpg';
+
+  static const String emptyOrders = '$_imagesPath/empty_orders.png';
+
   // Assets
   static const String splashScreenLogo = '$_svgPath/splash_logo.svg';
   static const String authenticationPageLogo =

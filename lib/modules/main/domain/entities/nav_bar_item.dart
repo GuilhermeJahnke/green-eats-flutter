@@ -6,6 +6,7 @@ import '../../main_navigator.dart';
 import '../../submodules/cart/presentation/pages/cart_page.dart';
 import '../../submodules/category/presentation/pages/category_page.dart';
 import '../../submodules/home/presentation/pages/home_page.dart';
+import '../../submodules/orders/presentation/pages/orders_page.dart';
 import '../../submodules/profile/presentation/pages/profile_page.dart';
 
 sealed class NavBarItem {
@@ -53,12 +54,12 @@ class CartItem extends NavBarItem {
         );
 }
 
-class OrderItem extends NavBarItem {
-  OrderItem()
+class OrdersItem extends NavBarItem {
+  OrdersItem()
       : super(
           svgPath: AppAssets.icOrder,
-          route: 'OrderPage.routePath',
-          navigation: Modular.get<MainNavigator>().goToHome,
+          route: OrdersPage.routePath,
+          navigation: Modular.get<MainNavigator>().goToOrders,
           cartManager: null,
         );
 }
