@@ -12,8 +12,8 @@ class WrapperNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const RouterOutlet(),
+    return const Scaffold(
+      body: RouterOutlet(),
       bottomNavigationBar: NavbarMolecule(),
     );
   }

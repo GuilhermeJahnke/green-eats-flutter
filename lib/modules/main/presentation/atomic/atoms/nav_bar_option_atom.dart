@@ -8,15 +8,17 @@ class NavBarOptionAtom extends StatelessWidget {
   const NavBarOptionAtom({
     super.key,
     required this.isSelected,
+    required this.showBadge,
     required this.onTap,
     required this.svgPath,
-    this.count,
+    this.count = 0,
   });
 
   final bool isSelected;
+  final bool showBadge;
   final VoidCallback onTap;
   final String svgPath;
-  final int? count;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,8 @@ class NavBarOptionAtom extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: Badge.count(
           alignment: Alignment.bottomRight,
-          isLabelVisible: count != null && count! > 0,
-          count: count ?? 0,
+          isLabelVisible: count > 0 && showBadge,
+          count: count,
           offset: const Offset(0, 0),
           textStyle: AppTextStyle.captionRegular,
           child: Container(

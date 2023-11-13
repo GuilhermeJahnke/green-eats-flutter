@@ -4,15 +4,46 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../domain/entities/nav_bar_item.dart';
 import '../atoms/nav_bar_option_atom.dart';
 
-class NavbarMolecule extends StatelessWidget {
-  NavbarMolecule({
+class NavbarMolecule extends StatefulWidget {
+  const NavbarMolecule({
     super.key,
   });
 
+  @override
+  State<NavbarMolecule> createState() => _NavbarMoleculeState();
+}
+
+class _NavbarMoleculeState extends State<NavbarMolecule> {
   final navBarItems = Modular.get<List<NavBarItem>>();
+
   bool get shouldShowNavbar => navBarItems
       .map((navBarItem) => navBarItem.route)
       .contains(Modular.to.path);
+
+  NavBarItem? get containsCartManager => navBarItems.firstWhere(
+        (navBarItem) => navBarItem.cartManager != null,
+      );
+
+  int cartCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (containsCartManager != null) {
+      containsCartManager?.cartManager?.addListener(cartManagerListener);
+    }
+  }
+
+  void cartManagerListener() {
+    if (containsCartManager == null) {
+      return;
+    }
+
+    setState(() {
+      cartCount = containsCartManager?.cartManager?.products.length ?? 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +68,8 @@ class NavbarMolecule extends StatelessWidget {
                     isSelected: Modular.to.path.contains(navBarItem.route),
                     svgPath: navBarItem.svgPath,
                     onTap: navBarItem.navigation,
-                    count: navBarItem.badgeCounter,
+                    count: cartCount,
+                    showBadge: navBarItem.cartManager != null,
                   ),
                 ),
             ],

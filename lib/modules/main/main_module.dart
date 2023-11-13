@@ -40,7 +40,9 @@ class MainModule extends Module {
           (i) => [
             HomeItem(),
             CategoryItem(),
-            CartItem(),
+            CartItem(
+              cartManager: CartManager.instance,
+            ),
             OrderItem(),
             ProfileItem(),
           ],

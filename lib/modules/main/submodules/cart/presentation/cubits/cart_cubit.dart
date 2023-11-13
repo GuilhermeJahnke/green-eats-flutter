@@ -22,10 +22,6 @@ class CartCubit extends Cubit<CartState> with InitManager {
     cartManager.addListener(_onCartChangeListener);
   }
 
-  void onDispose() {
-    cartManager.removeListener(_onCartChangeListener);
-  }
-
   void _onCartChangeListener() {
     emit(
       state.copyWith(

@@ -12,13 +12,13 @@ sealed class NavBarItem {
     required this.svgPath,
     required this.route,
     required this.navigation,
-    this.badgeCounter,
+    this.cartManager,
   });
 
   final String svgPath;
   final String route;
   final void Function() navigation;
-  final int? badgeCounter;
+  final CartManager? cartManager;
 }
 
 class HomeItem extends NavBarItem {
@@ -27,7 +27,7 @@ class HomeItem extends NavBarItem {
           svgPath: AppAssets.icHome,
           route: HomePage.routePath,
           navigation: Modular.get<MainNavigator>().goToHome,
-          badgeCounter: null,
+          cartManager: null,
         );
 }
 
@@ -37,17 +37,18 @@ class CategoryItem extends NavBarItem {
           svgPath: AppAssets.icCategory,
           route: CategoryPage.routePath,
           navigation: Modular.get<MainNavigator>().goToCategory,
-          badgeCounter: null,
+          cartManager: null,
         );
 }
 
 class CartItem extends NavBarItem {
-  CartItem()
-      : super(
+  CartItem({
+    required CartManager cartManager,
+  }) : super(
           svgPath: AppAssets.icCart,
           route: CartPage.routePath,
           navigation: Modular.get<MainNavigator>().goToCart,
-          badgeCounter: CartManager.instance.products.length,
+          cartManager: cartManager,
         );
 }
 
@@ -57,7 +58,7 @@ class OrderItem extends NavBarItem {
           svgPath: AppAssets.icOrder,
           route: 'OrderPage.routePath',
           navigation: Modular.get<MainNavigator>().goToHome,
-          badgeCounter: null,
+          cartManager: null,
         );
 }
 
@@ -67,6 +68,6 @@ class ProfileItem extends NavBarItem {
           svgPath: AppAssets.icPerson,
           route: 'ProfilePage.routePath',
           navigation: Modular.get<MainNavigator>().goToHome,
-          badgeCounter: null,
+          cartManager: null,
         );
 }
