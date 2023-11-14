@@ -1,8 +1,18 @@
+import '../../domain/entities/user.dart';
+import '../../domain/usecases/clear_user_usecase.dart';
 import '../../domain/usecases/get_cookie_usecase.dart';
+import '../../domain/usecases/get_current_user_usecase.dart';
 import '../../domain/usecases/set_cookie_usecase.dart';
+import '../../domain/usecases/update_user_usecase.dart';
 import '../datasources/local_datasource/local_datasource.dart';
 
-class SharedRepository implements GetCookieUsecase, SetCookieUsecase {
+class SharedRepository
+    implements
+        GetCookieUsecase,
+        SetCookieUsecase,
+        UpdateUserUsecase,
+        GetCurrentUsecase,
+        ClearUserUsecase {
   const SharedRepository({
     required this.localDatasource,
   });
@@ -19,6 +29,26 @@ class SharedRepository implements GetCookieUsecase, SetCookieUsecase {
   @override
   Future<void> setCookie(String cookie) async {
     await localDatasource.setCookie(cookie);
+
+    return;
+  }
+
+  @override
+  Future<void> clearUser() async {
+    await localDatasource.clearHiveUser();
+    return;
+  }
+
+  @override
+  Future<User?> getCurrentUser() async {
+    final user = await localDatasource.getCurrentHiveUser();
+
+    return user;
+  }
+
+  @override
+  Future<void> updateUser(User user) async {
+    await localDatasource.updateHiveUser(user);
 
     return;
   }

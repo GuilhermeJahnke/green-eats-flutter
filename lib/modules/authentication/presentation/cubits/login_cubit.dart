@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../shared/domain/entities/status.dart';
+import '../../../shared/domain/entities/user.dart';
 import '../../../shared/domain/errors/failures/failure.dart';
+import '../../../shared/domain/usecases/update_user_usecase.dart';
 import '../../../shared/shared_navigator.dart';
 import '../../../shared/utils/utils.dart';
 import '../../authentication_navigator.dart';
@@ -15,14 +17,17 @@ class LoginCubit extends Cubit<LoginState> {
     required AuthenticationNavigator navigator,
     required SharedNavigator sharedNavigator,
     required SignInUseCase signInUseCase,
+    required UpdateUserUsecase updateUserUsecase,
   })  : _navigator = navigator,
         _sharedNavigator = sharedNavigator,
         _signInUseCase = signInUseCase,
+        _updateUserUsecase = updateUserUsecase,
         super(const LoginState());
 
   final AuthenticationNavigator _navigator;
   final SharedNavigator _sharedNavigator;
   final SignInUseCase _signInUseCase;
+  final UpdateUserUsecase _updateUserUsecase;
 
   void onEmailChanged(String? value) {
     if (value == null) return;
@@ -57,13 +62,20 @@ class LoginCubit extends Cubit<LoginState> {
           ),
         );
       },
-      (_) {
+      (user) {
         emit(
           state.copyWith(status: Status.success),
         );
-        _sharedNavigator.openMainModule();
+
+        _updateCurrentUser(user);
       },
     );
+  }
+
+  Future<void> _updateCurrentUser(User user) async {
+    await _updateUserUsecase.updateUser(user);
+
+    _sharedNavigator.openMainModule();
   }
 
   void onLoginTap() {

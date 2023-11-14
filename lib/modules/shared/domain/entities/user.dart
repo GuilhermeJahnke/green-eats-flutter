@@ -1,5 +1,10 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
 import '../../configs/constants/app_assets.dart';
 
+part 'user.g.dart';
+
+@HiveType(typeId: 1)
 class User {
   const User({
     required this.id,
@@ -10,11 +15,17 @@ class User {
     this.photoUrl = AppAssets.defaultProfileIcon,
   });
 
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String lastName;
+  @HiveField(3)
   final String email;
+  @HiveField(4)
   final String document;
+  @HiveField(5)
   final String photoUrl;
 
   User copyWith({

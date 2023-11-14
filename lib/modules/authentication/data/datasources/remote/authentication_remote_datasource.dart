@@ -1,5 +1,7 @@
+import '../../../../shared/domain/entities/user.dart';
+
 abstract class AuthenticationRemoteDatasource {
-  Future<void> signIn({
+  Future<User> signIn({
     required String email,
     required String password,
   });

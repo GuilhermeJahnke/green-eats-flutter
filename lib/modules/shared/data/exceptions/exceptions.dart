@@ -9,3 +9,14 @@ class ServerException {
   final int statusCode;
   final dynamic data;
 }
+
+class ParseException {
+  ParseException({
+    required this.message,
+    required this.data,
+  }) : stackTrace = StackTrace.current;
+
+  final String message;
+  final dynamic data;
+  final StackTrace stackTrace;
+}

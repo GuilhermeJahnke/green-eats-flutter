@@ -10,7 +10,6 @@ import 'data/dio/logged_dio.dart';
 import 'data/dio/not_logged_dio.dart';
 import 'data/repository/shared_repository.dart';
 import 'mocks/mock_manager.dart';
-import 'mocks/mock_request_list.dart';
 import 'shared_navigator.dart';
 
 class AppModule extends Module {

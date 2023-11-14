@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       bloc: cubit,
       listener: (context, state) {
         if (state.status.isFailure && state.failure != null) {
-          context.showErrorSnackBar(state.failure?.exception.message);
+          context.showErrorSnackBar(state.failure?.exception?.message);
         }
       },
       builder: (context, state) {

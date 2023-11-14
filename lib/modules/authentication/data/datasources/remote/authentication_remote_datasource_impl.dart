@@ -1,5 +1,7 @@
 import '../../../../shared/configs/data/network/app_network.dart';
 import '../../../../shared/data/dio/not_logged_dio.dart';
+import '../../../../shared/data/models/user_model.dart';
+import '../../../../shared/domain/entities/user.dart';
 import 'authentication_remote_datasource.dart';
 
 class AuthenticationRemoteDatasourceImpl
@@ -14,11 +16,11 @@ class AuthenticationRemoteDatasourceImpl
   final AppNetwork _appNetwork;
 
   @override
-  Future<void> signIn({
+  Future<User> signIn({
     required String email,
     required String password,
   }) async {
-    await _notLoggedDio.post(
+    final response = await _notLoggedDio.post(
       _appNetwork.signIn,
       data: {
         'email': email,
@@ -26,7 +28,11 @@ class AuthenticationRemoteDatasourceImpl
       },
     );
 
-    return;
+    final user = UserModel.fromJson(
+      response.data,
+    );
+
+    return user;
   }
 
   @override

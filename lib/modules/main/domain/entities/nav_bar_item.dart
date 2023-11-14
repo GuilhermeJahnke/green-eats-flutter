@@ -9,7 +9,7 @@ import '../../submodules/home/presentation/pages/home_page.dart';
 import '../../submodules/orders/presentation/pages/orders_page.dart';
 import '../../submodules/profile/presentation/pages/profile_page.dart';
 
-sealed class NavBarItem {
+class NavBarItem {
   const NavBarItem({
     required this.svgPath,
     required this.route,

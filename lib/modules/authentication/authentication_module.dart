@@ -43,6 +43,7 @@ class AuthenticationModule extends Module {
             navigator: i(),
             sharedNavigator: i(),
             signInUseCase: i(),
+            updateUserUsecase: i(),
           ),
         ),
         Bind((i) => RegisterCubit()),
