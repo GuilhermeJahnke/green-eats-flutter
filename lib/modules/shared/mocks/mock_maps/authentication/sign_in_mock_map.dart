@@ -10,7 +10,7 @@ class SignInMockMap {
     'id': '123312313',
     'email': 'teste@gmail.com',
     'document': '12345678909',
-    'firstName': 'Amelia',
-    'lastName': 'rodrigues',
+    'firstName': 'No Coffee',
+    'lastName': 'No Code',
   };
 }

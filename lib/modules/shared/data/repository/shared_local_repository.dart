@@ -6,14 +6,14 @@ import '../../domain/usecases/set_cookie_usecase.dart';
 import '../../domain/usecases/update_user_usecase.dart';
 import '../datasources/local_datasource/local_datasource.dart';
 
-class SharedRepository
+class SharedLocalRepository
     implements
         GetCookieUsecase,
         SetCookieUsecase,
         UpdateUserUsecase,
         GetCurrentUsecase,
         ClearUserUsecase {
-  const SharedRepository({
+  const SharedLocalRepository({
     required this.localDatasource,
   });
 

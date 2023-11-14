@@ -1,30 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
-import '../../../configs/constants/app_colors.dart';
-import '../../../configs/constants/app_text_style.dart';
-import '../../../utils/utils.dart';
-import '../atoms/action_button_atom.dart';
-
-class ProductCardMolecule extends StatelessWidget {
-  const ProductCardMolecule({
-    super.key,
-    required this.onCardTap,
-    required this.onAddTap,
-    required this.imagePath,
-    required this.title,
-    required this.price,
-  });
-
-  final VoidCallback onCardTap;
-  final VoidCallback onAddTap;
-  final String imagePath;
-  final String title;
-  final double price;
+class ProductCardShimmerMolecule extends StatelessWidget {
+  const ProductCardShimmerMolecule();
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onCardTap,
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
       child: Container(
         width: 200,
         decoration: BoxDecoration(
@@ -35,19 +19,23 @@ class ProductCardMolecule extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
+            const ClipRRect(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
               ),
-              child: Utils.autoDetectImage(imagePath),
+              child: SizedBox(
+                height: 200,
+                width: 200,
+              ),
             ),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                title,
-                style: AppTextStyle.subtitleRegular,
+              child: Container(
+                height: 16,
+                width: 120,
+                color: Colors.grey,
               ),
             ),
             const SizedBox(height: 10),
@@ -59,15 +47,16 @@ class ProductCardMolecule extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Text(
-                    Utils.formatCurrency(price),
-                    style: AppTextStyle.subtitleBold.copyWith(
-                      color: AppColors.primaryColor,
-                    ),
+                  Container(
+                    height: 16,
+                    width: 80,
+                    color: Colors.grey,
                   ),
                   const Spacer(),
-                  ActionButtonAtom.add(
-                    onAddTap: onAddTap,
+                  Container(
+                    height: 16,
+                    width: 16,
+                    color: Colors.grey,
                   ),
                 ],
               ),

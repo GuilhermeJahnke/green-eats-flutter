@@ -1,5 +1,5 @@
-import '../mock_maps/authentication/sign_up_mock_map.dart';
-import '../mock_request.dart';
+import '../../mock_maps/authentication/sign_up_mock_map.dart';
+import '../../mock_request.dart';
 
 class SignUpMockRequest extends MockRequest {
   @override

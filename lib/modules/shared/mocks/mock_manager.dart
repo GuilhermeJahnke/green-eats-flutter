@@ -1,6 +1,9 @@
 import 'mock_request.dart';
-import 'mock_requests/sign_in_mock_request.dart';
-import 'mock_requests/sign_up_mock_request.dart';
+import 'mock_requests/authentication/sign_in_mock_request.dart';
+import 'mock_requests/authentication/sign_up_mock_request.dart';
+import 'mock_requests/shared/get_category_mock_request.dart';
+import 'mock_requests/shared/get_discount_products_mock_request.dart';
+import 'mock_requests/shared/get_products_mock_request.dart';
 
 class MockManager {
   MockManager();
@@ -8,6 +11,9 @@ class MockManager {
   final Map<String, MockRequest> mocks = {
     '/auth/sign-in': SignInMockRequest(),
     '/auth/sign-up': SignUpMockRequest(),
+    '/category/getAll': GetCategoryMockRequest(),
+    '/products/getAll': GetProductsMockRequest(),
+    '/products/getAllDiscount': GetDiscountProductsMockRequest(),
   };
 
   MockRequest? getMock(String url) {

@@ -6,8 +6,13 @@ import '../../../../../shared/domain/entities/cart_manager.dart';
 import '../../../../../shared/domain/entities/category.dart';
 import '../../../../../shared/domain/entities/init_manager.dart';
 import '../../../../../shared/domain/entities/product.dart';
-import '../../../../../shared/mocks/category_mock.dart';
-import '../../../../../shared/mocks/product_mock.dart';
+import '../../../../../shared/domain/entities/status.dart';
+import '../../../../../shared/domain/entities/user.dart';
+import '../../../../../shared/domain/errors/failures/failure.dart';
+import '../../../../../shared/domain/usecases/get_categories_usecase.dart';
+import '../../../../../shared/domain/usecases/get_current_user_usecase.dart';
+import '../../../../../shared/domain/usecases/get_discount_products_usecase.dart';
+import '../../../../../shared/domain/usecases/get_products_usecase.dart';
 import '../../../../main_navigator.dart';
 import '../../../cart/presentation/cubits/cart_cubit.dart';
 
@@ -17,22 +22,30 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
   HomeCubit({
     required this.mainNavigator,
     required this.cartManager,
+    required this.getCurrentUsecase,
+    required this.getDiscountProductsUsecase,
+    required this.getCategoriesUsecase,
+    required this.getProductsUsecase,
   }) : super(const HomeState());
 
   final MainNavigator mainNavigator;
   final CartManager cartManager;
   final CartCubit cartCubit = Modular.get<CartCubit>();
+  final GetCurrentUsecase getCurrentUsecase;
+  final GetDiscountProductsUsecase getDiscountProductsUsecase;
+  final GetCategoriesUsecase getCategoriesUsecase;
+  final GetProductsUsecase getProductsUsecase;
 
   @override
   void init() {
-    emit(
-      state.copyWith(
-        categories: categoriesListMock,
-        discountProducts: productsMockList.sublist(0, 3),
-        products: productsMockList,
-      ),
-    );
     cartCubit.init();
+
+    Future.wait([
+      _getCurrentUser(),
+      _getDiscountProducts(),
+      _getCategories(),
+      _getProducts(),
+    ]);
   }
 
   void onCardTap(Product value) {
@@ -61,5 +74,80 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
 
   void onSeeMoreCategoryTap() {
     mainNavigator.goToCategory();
+  }
+
+  Future<void> _getCurrentUser() async {
+    final user = await getCurrentUsecase.getCurrentUser();
+
+    emit(
+      state.copyWith(
+        user: user,
+      ),
+    );
+  }
+
+  Future<void> _getDiscountProducts() async {
+    emit(state.copyWith(discountProductsStatus: Status.loading));
+
+    final result = await getDiscountProductsUsecase.getDiscountProducts();
+
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          discountProductsStatus: Status.failure,
+          discountProductsFailure: failure,
+        ),
+      ),
+      (products) => emit(
+        state.copyWith(
+          discountProducts: products,
+          discountProductsStatus: Status.success,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _getCategories() async {
+    emit(state.copyWith(categoriesStatus: Status.loading));
+
+    final result = await getCategoriesUsecase.getCategories();
+
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          categoriesStatus: Status.failure,
+          categoriesFailure: failure,
+        ),
+      ),
+      (categories) => emit(
+        state.copyWith(
+          categories: categories,
+          categoriesStatus: Status.success,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _getProducts() async {
+    emit(state.copyWith(productsStatus: Status.loading));
+
+    final result = await getProductsUsecase.getProducts();
+
+    await Future.delayed(const Duration(seconds: 20));
+
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          productsStatus: Status.failure,
+          productsFailure: failure,
+        ),
+      ),
+      (products) => emit(
+        state.copyWith(
+          products: products,
+          productsStatus: Status.success,
+        ),
+      ),
+    );
   }
 }

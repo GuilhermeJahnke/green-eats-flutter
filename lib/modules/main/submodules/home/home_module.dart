@@ -16,6 +16,10 @@ class HomeModule extends Module {
           (i) => HomeCubit(
             mainNavigator: i(),
             cartManager: CartManager.instance,
+            getCurrentUsecase: i(),
+            getDiscountProductsUsecase: i(),
+            getCategoriesUsecase: i(),
+            getProductsUsecase: i(),
           ),
           export: true,
         ),

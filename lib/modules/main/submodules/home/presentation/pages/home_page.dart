@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../shared/utils/mixins/context_mixin.dart';
+import '../../../../../shared/utils/mixins/status_mixin.dart';
 import '../../home_module.dart';
 import '../atomic/templates/home_page_template.dart';
 import '../cubits/home_cubit.dart';
@@ -45,6 +46,10 @@ class _HomePageState extends State<HomePage> {
           discountProducts: state.discountProducts,
           categories: state.categories,
           products: state.products,
+          user: state.user,
+          discountProductsIsLoading: state.discountProductsStatus.isLoading,
+          categoriesIsLoading: state.categoriesStatus.isLoading,
+          productsIsLoading: state.productsStatus.isLoading,
         );
       },
     );
