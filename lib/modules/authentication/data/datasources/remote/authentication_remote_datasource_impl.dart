@@ -1,0 +1,43 @@
+import '../../../../shared/configs/data/network/app_network.dart';
+import '../../../../shared/data/dio/not_logged_dio.dart';
+import 'authentication_remote_datasource.dart';
+
+class AuthenticationRemoteDatasourceImpl
+    implements AuthenticationRemoteDatasource {
+  const AuthenticationRemoteDatasourceImpl({
+    required NotLoggedDio notLoggedDio,
+    required AppNetwork appNetwork,
+  })  : _notLoggedDio = notLoggedDio,
+        _appNetwork = appNetwork;
+
+  final NotLoggedDio _notLoggedDio;
+  final AppNetwork _appNetwork;
+
+  @override
+  Future<void> signIn({
+    required String email,
+    required String password,
+  }) async {
+    await _notLoggedDio.post(
+      _appNetwork.signIn,
+      data: {
+        'email': email,
+        'password': password,
+      },
+    );
+
+    return;
+  }
+
+  @override
+  Future<void> logout() {
+    // TODO: implement logout
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> register(String email, String password) {
+    // TODO: implement register
+    throw UnimplementedError();
+  }
+}

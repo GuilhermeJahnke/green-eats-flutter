@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'authentication_navigator.dart';
+import 'data/datasources/remote/authentication_remote_datasource_impl.dart';
+import 'data/repositories/authentication_repository.dart';
 import 'presentation/cubits/check_your_email_cubit.dart';
 import 'presentation/cubits/create_new_password_cubit.dart';
 import 'presentation/cubits/forgot_password_cubit.dart';
@@ -17,6 +19,21 @@ class AuthenticationModule extends Module {
 
   @override
   List<Bind<Object>> get binds => [
+        // Datasources
+        Bind(
+          (i) => AuthenticationRemoteDatasourceImpl(
+            notLoggedDio: i(),
+            appNetwork: i(),
+          ),
+        ),
+
+        // Repositories
+        Bind(
+          (i) => AuthenticationRepository(
+            authenticationRemoteDatasource: i(),
+          ),
+        ),
+
         // Navigator
         Bind((i) => AuthenticationNavigator()),
 
@@ -25,6 +42,7 @@ class AuthenticationModule extends Module {
           (i) => LoginCubit(
             navigator: i(),
             sharedNavigator: i(),
+            signInUseCase: i(),
           ),
         ),
         Bind((i) => RegisterCubit()),

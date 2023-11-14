@@ -4,7 +4,7 @@ import '../../../configs/constants/app_colors.dart';
 import '../../../configs/constants/app_text_style.dart';
 import '../../../configs/presentation/textFields/text_field_type_extension.dart';
 
-enum TextFieldType { none, email, password, cpf, emailOrCpf, search }
+enum TextFieldType { none, email, password, cpf, search }
 
 class TextFieldMolecule extends StatefulWidget {
   const TextFieldMolecule({
@@ -69,7 +69,13 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
         widget.onChanged(value);
 
         setState(() {
-          errorText = widget.type.getValidator().validate(value);
+          errorText = null;
+        });
+
+        Future.delayed(const Duration(milliseconds: 500), () {
+          setState(() {
+            errorText = widget.type.getValidator().validate(value);
+          });
         });
       },
       initialValue: widget.initialText,
@@ -79,7 +85,7 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
           vertical: 20,
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

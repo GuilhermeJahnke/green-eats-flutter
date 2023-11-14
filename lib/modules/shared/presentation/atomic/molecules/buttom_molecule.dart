@@ -65,7 +65,9 @@ class _ButtonMoleculeState extends State<ButtonMolecule> {
 
   Widget getWidget() {
     if (widget.isLoading) {
-      return const CircularProgressIndicator();
+      return const CircularProgressIndicator(
+        color: Colors.white,
+      );
     }
 
     return Center(

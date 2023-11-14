@@ -1,8 +1,10 @@
-abstract class Validator {
+import '../../../utils/utils.dart';
+
+abstract class TextFieldValidator {
   String? validate(String? value);
 }
 
-class EmptyValidator implements Validator {
+class EmptyValidator implements TextFieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
@@ -12,39 +14,48 @@ class EmptyValidator implements Validator {
   }
 }
 
-class EmailValidator implements Validator {
+class PasswordValidator implements TextFieldValidator {
   @override
   String? validate(String? value) {
-    if (value == null || value.isEmpty && !value.contains('@')) {
+    if (value == null || value.isEmpty) {
+      return 'Campo obrigatório';
+    }
+
+    if (value.length < 6) {
+      return 'Senha deve ter no mínimo 6 caracteres';
+    }
+
+    return null;
+  }
+}
+
+class EmailValidator implements TextFieldValidator {
+  @override
+  String? validate(String? value) {
+    if (value == null || value.isEmpty && !Utils.isEmailValid(value)) {
       return 'Email inválido';
     }
+
     return null;
   }
 }
 
-class CpfValidator implements Validator {
+class CpfValidator implements TextFieldValidator {
   @override
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
       return 'Campo obrigatório';
     }
-    // Adicione a lógica de validação do documento (exemplo: CPF) aqui.
-    return null;
-  }
-}
 
-class EmailOrCpfValidator implements Validator {
-  @override
-  String? validate(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Campo obrigatório';
+    if (Utils.isCpfValid(value)) {
+      return 'CPF inválido';
     }
-    // Adicione a lógica de validação do documento (exemplo: CPF) aqui.
+
     return null;
   }
 }
 
-class SearchValidator implements Validator {
+class SearchValidator implements TextFieldValidator {
   @override
   String? validate(String? value) {
     return null;

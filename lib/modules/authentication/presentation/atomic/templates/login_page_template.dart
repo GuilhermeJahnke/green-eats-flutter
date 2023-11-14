@@ -15,6 +15,8 @@ class LoginPageTemplate extends StatelessWidget {
     required this.onLoginTap,
     required this.onSignUpTap,
     required this.onForgotPasswordTap,
+    required this.isButtonEnabled,
+    required this.isButtonLoading,
   });
 
   final ValueSetter<String?> onEmailChanged;
@@ -23,6 +25,9 @@ class LoginPageTemplate extends StatelessWidget {
   final VoidCallback onLoginTap;
   final VoidCallback onSignUpTap;
   final VoidCallback onForgotPasswordTap;
+
+  final bool isButtonEnabled;
+  final bool isButtonLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +62,7 @@ class LoginPageTemplate extends StatelessWidget {
                       ),
                       const SizedBox(height: 30),
                       TextFieldMolecule(
-                        type: TextFieldType.emailOrCpf,
+                        type: TextFieldType.email,
                         label: AuthenticationStrings.loginPage.emailOrCpf,
                         onChanged: onEmailChanged,
                       ),
@@ -85,6 +90,8 @@ class LoginPageTemplate extends StatelessWidget {
                         title: AuthenticationStrings.loginPage.login,
                         type: Buttontype.filled,
                         onTap: onLoginTap,
+                        isEnabled: isButtonEnabled,
+                        isLoading: isButtonLoading,
                       ),
                       const SizedBox(height: 30),
                       InkWell(

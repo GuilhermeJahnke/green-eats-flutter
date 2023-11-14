@@ -1,11 +1,13 @@
 import '../../env/environment.dart';
 
-abstract class AppNetwork {
-  AppNetwork({
+class AppNetwork {
+  const AppNetwork({
     required this.environment,
-  }) : baseUrl = environment.baseUrl;
+  });
 
   final Environment environment;
 
-  final String baseUrl;
+  String get baseUrl => environment.baseUrl;
+
+  String get signIn => '$baseUrl/auth/sign-in';
 }

@@ -3,12 +3,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../authentication/authentication_module.dart';
 import '../main/main_module.dart';
 import '../splash/splash_module.dart';
-import 'configs/data/network/app_network_impl.dart';
+import 'configs/data/network/app_network.dart';
 import 'configs/env/environment.dart';
 import 'data/datasources/local_datasource/local_datasource_impl.dart';
 import 'data/dio/logged_dio.dart';
 import 'data/dio/not_logged_dio.dart';
 import 'data/repository/shared_repository.dart';
+import 'mocks/mock_manager.dart';
+import 'mocks/mock_request_list.dart';
 import 'shared_navigator.dart';
 
 class AppModule extends Module {
@@ -22,7 +24,10 @@ class AppModule extends Module {
   List<Bind<Object>> get binds => [
         Bind((i) => environment),
         Bind(
-          (i) => AppNetworkImpl(environment: environment),
+          (i) => AppNetwork(environment: environment),
+        ),
+        Bind(
+          (i) => MockManager(),
         ),
         Bind(
           (i) => LocalDatasourceImpl(),

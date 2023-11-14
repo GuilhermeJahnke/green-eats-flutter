@@ -1,23 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../configs/env/environment.dart';
 
 abstract class BaseDio extends DioForNative {
   BaseDio({
-    List<Interceptor>? interceptors,
+    List<Interceptor>? customInterceptors,
     required Environment environment,
   }) : super() {
-    if (kDebugMode && environment.isMock) {
-      interceptors?.add(
-        PrettyDioLogger(
-          requestBody: true,
-          maxWidth: 120,
-          logPrint: (obj) => debugPrint(obj as String?),
-        ),
-      );
+    interceptors.add(
+      PrettyDioLogger(
+        requestBody: true,
+        maxWidth: 120,
+        request: true,
+        logPrint: (obj) {
+          debugPrint(obj as String?);
+        },
+      ),
+    );
+
+    if (customInterceptors?.isNotEmpty == true) {
+      interceptors.addAll(customInterceptors!);
     }
 
     options = BaseOptions(
