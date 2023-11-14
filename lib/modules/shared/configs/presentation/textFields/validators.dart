@@ -32,7 +32,7 @@ class PasswordValidator implements TextFieldValidator {
 class EmailValidator implements TextFieldValidator {
   @override
   String? validate(String? value) {
-    if (value == null || value.isEmpty && !Utils.isEmailValid(value)) {
+    if (value == null || value.isEmpty || !Utils.isEmailValid(value)) {
       return 'Email inválido';
     }
 
@@ -47,7 +47,7 @@ class CpfValidator implements TextFieldValidator {
       return 'Campo obrigatório';
     }
 
-    if (Utils.isCpfValid(value)) {
+    if (!Utils.isCpfValid(value)) {
       return 'CPF inválido';
     }
 

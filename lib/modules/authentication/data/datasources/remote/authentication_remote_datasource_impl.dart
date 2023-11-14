@@ -42,8 +42,28 @@ class AuthenticationRemoteDatasourceImpl
   }
 
   @override
-  Future<void> register(String email, String password) {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<User> signUp({
+    required String name,
+    required String lastName,
+    required String document,
+    required String email,
+    required String password,
+  }) async {
+    final response = await _notLoggedDio.post(
+      _appNetwork.signUp,
+      data: {
+        'firstName': name,
+        'last_name': lastName,
+        'document': document,
+        'email': email,
+        'password': password,
+      },
+    );
+
+    final user = UserModel.fromJson(
+      response.data,
+    );
+
+    return user;
   }
 }

@@ -5,6 +5,12 @@ abstract class AuthenticationRemoteDatasource {
     required String email,
     required String password,
   });
-  Future<void> register(String email, String password);
+  Future<User> signUp({
+    required String name,
+    required String lastName,
+    required String document,
+    required String email,
+    required String password,
+  });
   Future<void> logout();
 }

@@ -17,6 +17,9 @@ class RegisterPageTemplate extends StatelessWidget {
     required this.onConfirmPasswordChanged,
     required this.onRegisterTap,
     required this.onTermsAndConditionsTap,
+    required this.onConfirmPasswordValidate,
+    required this.isLoading,
+    required this.isButtonEnabled,
   });
 
   final ValueSetter<String?> onNameChanged;
@@ -25,9 +28,13 @@ class RegisterPageTemplate extends StatelessWidget {
   final ValueSetter<String?> onEmailChanged;
   final ValueSetter<String?> onPasswordChanged;
   final ValueSetter<String?> onConfirmPasswordChanged;
+  final String? Function(String?) onConfirmPasswordValidate;
 
   final VoidCallback onRegisterTap;
   final VoidCallback onTermsAndConditionsTap;
+
+  final bool isLoading;
+  final bool isButtonEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +87,15 @@ class RegisterPageTemplate extends StatelessWidget {
                   type: TextFieldType.password,
                   label: AuthenticationStrings.registerPage.confirmPassword,
                   onChanged: onConfirmPasswordChanged,
+                  validator: onConfirmPasswordValidate,
                 ),
                 const SizedBox(height: 30),
                 ButtonMolecule(
                   type: Buttontype.filled,
                   title: AuthenticationStrings.registerPage.signUp,
                   onTap: onRegisterTap,
+                  isLoading: isLoading,
+                  isEnabled: isButtonEnabled,
                 ),
                 const SizedBox(height: 40),
                 InkWell(

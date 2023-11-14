@@ -109,11 +109,44 @@ class Utils {
   }
 
   static bool isCpfValid(String cpf) {
-    final regex = RegExp(
-      r'^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$',
-    );
+    cpf = cpf.replaceAll(RegExp(r'[^0-9]'), '');
 
-    return regex.hasMatch(cpf);
+    if (cpf.length != 11 || RegExp(r'(\d)\1{10}').hasMatch(cpf)) {
+      return false;
+    }
+
+    final List<int> cpfDigits =
+        cpf.runes.map((e) => int.parse(String.fromCharCode(e))).toList();
+
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+      sum += cpfDigits[i] * (10 - i);
+    }
+
+    int firstDigit = (sum * 10) % 11;
+    if (firstDigit == 10) {
+      firstDigit = 0;
+    }
+
+    if (firstDigit != cpfDigits[9]) {
+      return false;
+    }
+
+    sum = 0;
+    for (int i = 0; i < 10; i++) {
+      sum += cpfDigits[i] * (11 - i);
+    }
+
+    int secondDigit = (sum * 10) % 11;
+    if (secondDigit == 10) {
+      secondDigit = 0;
+    }
+
+    if (secondDigit != cpfDigits[10]) {
+      return false;
+    }
+
+    return true;
   }
 
   static bool isCnpjValid(String cnpj) {

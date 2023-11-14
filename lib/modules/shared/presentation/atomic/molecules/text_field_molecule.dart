@@ -14,6 +14,7 @@ class TextFieldMolecule extends StatefulWidget {
     required this.onChanged,
     this.isEnabled = true,
     this.initialText,
+    this.validator,
   });
 
   final TextFieldType type;
@@ -21,6 +22,7 @@ class TextFieldMolecule extends StatefulWidget {
   final ValueSetter<String?> onChanged;
   final bool isEnabled;
   final String? initialText;
+  final String? Function(String?)? validator;
 
   @override
   State<TextFieldMolecule> createState() => _TextFieldMoleculeState();
@@ -60,6 +62,15 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    if (widget.type == TextFieldType.password) {
+      isObscure = true;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -68,16 +79,21 @@ class _TextFieldMoleculeState extends State<TextFieldMolecule> {
       onChanged: (value) {
         widget.onChanged(value);
 
-        setState(() {
-          errorText = null;
-        });
+        if (widget.type.getValidator().validate(value) == null) {
+          if (errorText != null) {
+            setState(() {
+              errorText = null;
+            });
+          }
 
-        Future.delayed(const Duration(milliseconds: 500), () {
-          setState(() {
-            errorText = widget.type.getValidator().validate(value);
-          });
+          return;
+        }
+
+        setState(() {
+          errorText = widget.type.getValidator().validate(value);
         });
       },
+      validator: widget.validator?.call,
       initialValue: widget.initialText,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(

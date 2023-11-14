@@ -46,7 +46,13 @@ class AuthenticationModule extends Module {
             updateUserUsecase: i(),
           ),
         ),
-        Bind((i) => RegisterCubit()),
+        Bind(
+          (i) => RegisterCubit(
+            sharedNavigator: i(),
+            signUpUseCase: i(),
+            updateUserUsecase: i(),
+          ),
+        ),
         Bind((i) => ForgotPasswordCubit(navigator: i())),
         Bind((i) => CheckYourEmailCubit(navigator: i())),
         Bind((i) => CreateNewPasswordCubit(navigator: i())),

@@ -10,4 +10,5 @@ class AppNetwork {
   String get baseUrl => environment.baseUrl;
 
   String get signIn => '$baseUrl/auth/sign-in';
+  String get signUp => '$baseUrl/auth/sign-up';
 }
