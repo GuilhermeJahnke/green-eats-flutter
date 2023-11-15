@@ -8,7 +8,8 @@ class ProductCardShimmerBuilderOrganism extends StatelessWidget {
   const ProductCardShimmerBuilderOrganism();
 
   List<Widget> _buildTermGroups() {
-    final groupedTerms = Utils.groupElements([1, 2], groupSize: 2);
+    final groupedTerms =
+        Utils.groupElements(List.generate(10, (index) => index), groupSize: 2);
 
     final termGroups = groupedTerms
         .map(

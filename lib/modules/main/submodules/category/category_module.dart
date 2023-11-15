@@ -3,6 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../shared/domain/entities/cart_manager.dart';
 import '../../presentation/atomic/organisms/wrapper_navbar_organism.dart';
 import 'category_navigator.dart';
+import 'data/datasources/category_remote_datasource_impl.dart';
+import 'data/repositories/category_repository.dart';
 import 'presentation/cubits/category_cubit.dart';
 import 'presentation/cubits/category_detail_cubit.dart';
 import 'presentation/pages/category_detail_page.dart';
@@ -14,6 +16,19 @@ class CategoryModule extends Module {
 
   @override
   List<Bind<Object>> get binds => [
+        // Datasources
+        Bind(
+          (i) => CategoryRemoteDatasourceImpl(
+            loggedDio: i(),
+            appNetwork: i(),
+          ),
+        ),
+
+        // Repositories
+        Bind(
+          (i) => CategoryRepository(categoryRemoteDatasource: i()),
+        ),
+
         // Navigator
         Bind.factory(
           (i) => CategoryNavigator(),
@@ -33,6 +48,7 @@ class CategoryModule extends Module {
             category: i.args.data,
             mainNavigator: i(),
             cartManager: CartManager.instance,
+            getProductsByCategoryUseCase: i(),
           ),
         ),
       ];

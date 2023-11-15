@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../shared/utils/mixins/status_mixin.dart';
 import '../../category_module.dart';
 import '../atomic/templates/category_detail_page_template.dart';
 import '../cubits/category_detail_cubit.dart';
@@ -37,6 +38,7 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
           onCardTap: _cubit.onCardTap,
           productList: state.products,
           category: state.category,
+          isLoading: state.status.isLoading,
         );
       },
     );

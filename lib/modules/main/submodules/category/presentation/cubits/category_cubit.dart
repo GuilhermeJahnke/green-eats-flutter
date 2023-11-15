@@ -29,8 +29,6 @@ class CategoryCubit extends Cubit<CategoryState> with InitManager {
 
     final result = await getCategoriesUsecase.getCategories();
 
-    await Future.delayed(const Duration(seconds: 10));
-
     result.fold(
       (failure) {
         emit(
