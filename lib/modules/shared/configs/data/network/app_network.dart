@@ -17,4 +17,5 @@ class AppNetwork {
   String get getDiscountProducts => '$baseUrl/products/getAllDiscount';
   String get updateProfile => '$baseUrl/profile/update';
   String get getAllByCategory => '$baseUrl/products/getAllByCategory';
+  String get getAllOrders => '$baseUrl/orders/getAll';
 }

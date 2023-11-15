@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../shared/utils/mixins/status_mixin.dart';
 import '../../orders_module.dart';
 import '../atomic/templates/orders_page_template.dart';
 import '../cubits/orders_cubit.dart';
@@ -34,6 +35,7 @@ class _OrdersPageState extends State<OrdersPage> {
       builder: (context, state) {
         return OrdersPageTemplate(
           orders: state.orders,
+          isLoading: state.status.isLoading,
         );
       },
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../shared/configs/constants/app_text_style.dart';
 import '../../../../../../shared/domain/entities/order.dart';
 import '../../../../../../shared/utils/utils.dart';
-import 'order_status_molecule.dart';
+import '../../entities/order_status_extension.dart';
 
 class OrderMolecule extends StatelessWidget {
   const OrderMolecule({
@@ -47,9 +47,9 @@ class OrderMolecule extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  OrderStatusMolecule(
-                    orderNumber: orderNumber,
-                    status: status,
+                  Text(
+                    '#$orderNumber',
+                    style: AppTextStyle.subtitleBold,
                   ),
                   const SizedBox(height: 10.0),
                   Text(
@@ -66,6 +66,24 @@ class OrderMolecule extends StatelessWidget {
                   Text(
                     Utils.formatDate(date),
                     style: AppTextStyle.bodyBold,
+                  ),
+                  const SizedBox(height: 10.0),
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: status.color,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        status.text,
+                        style: AppTextStyle.bodyBold.copyWith(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 ],
               ),
