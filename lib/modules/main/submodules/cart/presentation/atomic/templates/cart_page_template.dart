@@ -13,6 +13,7 @@ class CartPageTemplate extends StatelessWidget {
     required this.onAddQuantityTap,
     required this.onRemoveQuantityTap,
     required this.onConfirmTap,
+    required this.isLoading,
   });
 
   final List<Product> products;
@@ -21,6 +22,8 @@ class CartPageTemplate extends StatelessWidget {
   final ValueSetter<Product> onRemoveQuantityTap;
 
   final VoidCallback onConfirmTap;
+
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +75,7 @@ class CartPageTemplate extends StatelessWidget {
                     type: Buttontype.filled,
                     title: 'Confirmar',
                     onTap: onConfirmTap,
+                    isLoading: isLoading,
                   ),
                 ),
               ),

@@ -30,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           context.showErrorSnackBar(state.failure?.exception?.message);
         }
       },
+      listenWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return LoginPageTemplate(
           onEmailChanged: cubit.onEmailChanged,

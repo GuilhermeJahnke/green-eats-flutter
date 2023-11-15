@@ -38,6 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           context.showErrorSnackBar(state.failure?.exception?.message);
         }
       },
+      listenWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return ProfilePageTemplate(
           onPickImageTap: _cubit.onPickImageTap,

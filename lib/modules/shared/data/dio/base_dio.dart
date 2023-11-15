@@ -15,6 +15,7 @@ abstract class BaseDio extends DioForNative {
         requestBody: true,
         maxWidth: 120,
         request: true,
+        responseBody: true,
         logPrint: (obj) {
           debugPrint(obj as String?);
         },

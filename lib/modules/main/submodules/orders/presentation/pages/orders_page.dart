@@ -36,6 +36,7 @@ class _OrdersPageState extends State<OrdersPage> {
         return OrdersPageTemplate(
           orders: state.orders,
           isLoading: state.status.isLoading,
+          onRefresh: _cubit.onRefresh,
         );
       },
     );

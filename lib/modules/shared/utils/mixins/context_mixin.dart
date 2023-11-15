@@ -6,6 +6,21 @@ import '../../app_strings.dart';
 import '../../configs/constants/app_text_style.dart';
 
 extension BuildContextMixin on BuildContext {
+  void showSuccessSnackBar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: AppTextStyle.bodyRegular.copyWith(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.green,
+        duration: const Duration(milliseconds: 2000),
+      ),
+    );
+  }
+
   void showSuccessAddCartSnackBar() {
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(

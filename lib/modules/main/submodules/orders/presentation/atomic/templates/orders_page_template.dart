@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../shared/configs/constants/app_assets.dart';
@@ -13,56 +14,61 @@ class OrdersPageTemplate extends StatelessWidget {
     super.key,
     required this.orders,
     required this.isLoading,
+    required this.onRefresh,
   });
 
   final List<Order> orders;
   final bool isLoading;
+  final AsyncCallback onRefresh;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(height: 20.0),
-                const SectionTitleMolecule(
-                  title: 'Meus Pedidos',
-                  showSeeMore: false,
-                  titleTextStyle: AppTextStyle.titleBold,
-                ),
-                const SizedBox(height: 20.0),
-                if (isLoading)
-                  const OrdersShimmerBuilderOrganism()
-                else ...[
-                  Visibility(
-                    visible: orders.isEmpty,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 20.0),
-                          Utils.autoDetectImage(AppAssets.emptyOrders),
-                          const SizedBox(height: 20.0),
-                          const Text(
-                            'Nenhum pedido encontrado',
-                            style: AppTextStyle.titleBold,
-                          ),
-                          const SizedBox(height: 20.0),
-                          const Text(
-                            'Parece que você ainda não fez nenhum pedido',
-                            style: AppTextStyle.subtitleRegular,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+      body: RefreshIndicator(
+        onRefresh: onRefresh,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 20.0),
+                  const SectionTitleMolecule(
+                    title: 'Meus Pedidos',
+                    showSeeMore: false,
+                    titleTextStyle: AppTextStyle.titleBold,
+                  ),
+                  const SizedBox(height: 20.0),
+                  if (isLoading)
+                    const OrdersShimmerBuilderOrganism()
+                  else ...[
+                    Visibility(
+                      visible: orders.isEmpty,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 20.0),
+                            Utils.autoDetectImage(AppAssets.emptyOrders),
+                            const SizedBox(height: 20.0),
+                            const Text(
+                              'Nenhum pedido encontrado',
+                              style: AppTextStyle.titleBold,
+                            ),
+                            const SizedBox(height: 20.0),
+                            const Text(
+                              'Parece que você ainda não fez nenhum pedido',
+                              style: AppTextStyle.subtitleRegular,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  OrdersBuilderOrganism(orders: orders),
-                  const SizedBox(height: 40.0),
+                    OrdersBuilderOrganism(orders: orders),
+                    const SizedBox(height: 40.0),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         ),

@@ -54,4 +54,17 @@ class Product extends HeaderCardHelper {
       quantity: quantity ?? this.quantity,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'price': price,
+      'weight': weight,
+      'discount': discount,
+      'imagePath': imagePath,
+      'quantity': quantity,
+    };
+  }
 }

@@ -45,4 +45,8 @@ class OrdersCubit extends Cubit<OrdersState> with InitManager {
       },
     );
   }
+
+  Future<void> onRefresh() async {
+    await _getOrders();
+  }
 }

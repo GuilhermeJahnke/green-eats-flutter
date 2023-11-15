@@ -30,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
           context.showErrorSnackBar(state.failure?.exception?.message);
         }
       },
+      listenWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return RegisterPageTemplate(
           onNameChanged: cubit.onNameChanged,
