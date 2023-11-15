@@ -23,6 +23,7 @@ class CategoryModule extends Module {
         Bind.lazySingleton(
           (i) => CategoryCubit(
             navigator: i(),
+            getCategoriesUsecase: i(),
           ),
           export: true,
         ),

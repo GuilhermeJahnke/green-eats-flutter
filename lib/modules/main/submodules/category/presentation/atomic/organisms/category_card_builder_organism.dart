@@ -4,7 +4,7 @@ import '../../../../../../shared/domain/entities/category.dart';
 import '../../../../../../shared/utils/mixins/interable_mixin.dart';
 import '../../../../../../shared/utils/utils.dart';
 
-import 'category_card_molecule.dart';
+import '../molecules/category_card_molecule.dart';
 
 class CategoryCardBuilderOrganism extends StatelessWidget {
   const CategoryCardBuilderOrganism({
