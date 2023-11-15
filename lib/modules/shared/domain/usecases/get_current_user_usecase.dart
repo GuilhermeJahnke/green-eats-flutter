@@ -1,5 +1,5 @@
 import '../entities/user.dart';
 
-abstract class GetCurrentUsecase {
+abstract class GetCurrentUserUsecase {
   Future<User?> getCurrentUser();
 }

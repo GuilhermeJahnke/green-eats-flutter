@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import '../../../shared/domain/entities/status.dart';
 import '../../../shared/domain/entities/user.dart';
 import '../../../shared/domain/errors/failures/failure.dart';
-import '../../../shared/domain/usecases/update_user_usecase.dart';
+import '../../../shared/domain/usecases/update_hive_user_usecase.dart';
 import '../../../shared/shared_navigator.dart';
 import '../../../shared/utils/utils.dart';
 import '../../authentication_navigator.dart';
@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
     required AuthenticationNavigator navigator,
     required SharedNavigator sharedNavigator,
     required SignInUseCase signInUseCase,
-    required UpdateUserUsecase updateUserUsecase,
+    required UpdateHiveUserUsecase updateUserUsecase,
   })  : _navigator = navigator,
         _sharedNavigator = sharedNavigator,
         _signInUseCase = signInUseCase,
@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthenticationNavigator _navigator;
   final SharedNavigator _sharedNavigator;
   final SignInUseCase _signInUseCase;
-  final UpdateUserUsecase _updateUserUsecase;
+  final UpdateHiveUserUsecase _updateUserUsecase;
 
   void onEmailChanged(String? value) {
     if (value == null) return;

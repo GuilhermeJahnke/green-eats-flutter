@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import '../../../shared/domain/entities/status.dart';
 import '../../../shared/domain/entities/user.dart';
 import '../../../shared/domain/errors/failures/failure.dart';
-import '../../../shared/domain/usecases/update_user_usecase.dart';
+import '../../../shared/domain/usecases/update_hive_user_usecase.dart';
 import '../../../shared/shared_navigator.dart';
 import '../../../shared/utils/utils.dart';
 import '../../domain/usecases/sign_up_use_case.dart';
@@ -15,7 +15,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit({
     required SharedNavigator sharedNavigator,
     required SignUpUseCase signUpUseCase,
-    required UpdateUserUsecase updateUserUsecase,
+    required UpdateHiveUserUsecase updateUserUsecase,
   })  : _sharedNavigator = sharedNavigator,
         _signUpUseCase = signUpUseCase,
         _updateUserUsecase = updateUserUsecase,
@@ -23,7 +23,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   final SharedNavigator _sharedNavigator;
   final SignUpUseCase _signUpUseCase;
-  final UpdateUserUsecase _updateUserUsecase;
+  final UpdateHiveUserUsecase _updateUserUsecase;
 
   void onNameChanged(String? value) {
     if (value == null) return;

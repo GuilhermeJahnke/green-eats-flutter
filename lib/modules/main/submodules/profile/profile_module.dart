@@ -1,6 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../presentation/atomic/organisms/wrapper_navbar_organism.dart';
+import 'data/datasources/profile_remote_datasource_impl.dart';
+import 'data/repositories/profile_repository.dart';
 import 'presentation/cubits/profile_cubit.dart';
 import 'presentation/pages/profile_page.dart';
 
@@ -10,9 +12,26 @@ class ProfileModule extends Module {
 
   @override
   List<Bind<Object>> get binds => [
+        // Datasources
+        Bind(
+          (i) => ProfileRemoteDatasourceImpl(
+            loggedDio: i(),
+            appNetwork: i(),
+          ),
+        ),
+
+        // Repositories
+        Bind(
+          (i) => ProfileRepository(remoteDatasource: i()),
+        ),
+
         // Cubits
         Bind.lazySingleton(
-          (i) => ProfileCubit(),
+          (i) => ProfileCubit(
+            getCurrentUserUsecase: i(),
+            updateUserUsecase: i(),
+            updateHiveUserUsecase: i(),
+          ),
           export: true,
         ),
       ];

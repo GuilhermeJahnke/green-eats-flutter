@@ -31,7 +31,7 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
   final MainNavigator mainNavigator;
   final CartManager cartManager;
   final CartCubit cartCubit = Modular.get<CartCubit>();
-  final GetCurrentUsecase getCurrentUsecase;
+  final GetCurrentUserUsecase getCurrentUsecase;
   final GetDiscountProductsUsecase getDiscountProductsUsecase;
   final GetCategoriesUsecase getCategoriesUsecase;
   final GetProductsUsecase getProductsUsecase;
@@ -132,8 +132,6 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
     emit(state.copyWith(productsStatus: Status.loading));
 
     final result = await getProductsUsecase.getProducts();
-
-    await Future.delayed(const Duration(seconds: 20));
 
     result.fold(
       (failure) => emit(

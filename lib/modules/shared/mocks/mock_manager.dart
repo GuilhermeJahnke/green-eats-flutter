@@ -1,6 +1,7 @@
 import 'mock_request.dart';
 import 'mock_requests/authentication/sign_in_mock_request.dart';
 import 'mock_requests/authentication/sign_up_mock_request.dart';
+import 'mock_requests/profile/update_profile_mock_request.dart';
 import 'mock_requests/shared/get_category_mock_request.dart';
 import 'mock_requests/shared/get_discount_products_mock_request.dart';
 import 'mock_requests/shared/get_products_mock_request.dart';
@@ -14,6 +15,7 @@ class MockManager {
     '/category/getAll': GetCategoryMockRequest(),
     '/products/getAll': GetProductsMockRequest(),
     '/products/getAllDiscount': GetDiscountProductsMockRequest(),
+    '/profile/update': UpdateProfileMockRequest(),
   };
 
   MockRequest? getMock(String url) {

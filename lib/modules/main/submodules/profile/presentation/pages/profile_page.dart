@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../shared/utils/mixins/context_mixin.dart';
+import '../../../../../shared/utils/mixins/status_mixin.dart';
 import '../../profile_module.dart';
 import '../atomic/templates/profile_page_template.dart';
 import '../cubits/profile_cubit.dart';
@@ -29,18 +31,23 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileCubit, ProfileState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
       bloc: _cubit,
+      listener: (context, state) {
+        if (state.status.isFailure && state.failure != null) {
+          context.showErrorSnackBar(state.failure?.exception?.message);
+        }
+      },
       builder: (context, state) {
-        if (state.user == null) return const SizedBox.shrink();
-
         return ProfilePageTemplate(
           onPickImageTap: _cubit.onPickImageTap,
           onUpdateTap: _cubit.onUpdateTap,
           onNameChanged: _cubit.onNameChanged,
           onLastNameChanged: _cubit.onLastNameChanged,
           onEmailChanged: _cubit.onEmailChanged,
-          user: state.user!,
+          user: state.user,
+          isLoading: state.status.isLoading,
+          isButtonEnabled: state.isButtonEnabled,
         );
       },
     );
