@@ -52,8 +52,7 @@ class AuthenticationRemoteDatasourceImpl
     final response = await _notLoggedDio.post(
       _appNetwork.signUp,
       data: {
-        'firstName': name,
-        'last_name': lastName,
+        'name': '$name $lastName',
         'document': document,
         'email': email,
         'password': password,

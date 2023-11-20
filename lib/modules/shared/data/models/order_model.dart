@@ -17,6 +17,6 @@ class OrderModel extends Order {
         establishmentImage: json['establishmentImage'],
         quantity: json['quantity'],
         status: OrderStatusModel.fromJson(json['status']),
-        date: DateTime.parse(json['date']),
+        date: DateTime.parse(json['updated_at']),
       );
 }

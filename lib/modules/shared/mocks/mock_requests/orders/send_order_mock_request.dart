@@ -15,5 +15,5 @@ class SendOrderMockRequest extends MockRequest {
   int get statusCode => 200;
 
   @override
-  String get url => '/orders/send';
+  String get url => '/orders';
 }

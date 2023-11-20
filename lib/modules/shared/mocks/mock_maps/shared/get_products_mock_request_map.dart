@@ -13,7 +13,7 @@ class GetProductsMockMap {
       'weight': 0.200,
       'discount': 10,
       'imagePath':
-          'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg'
+          'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
     },
     {
       'id': '5213w3523-51-6434-2',
@@ -24,7 +24,7 @@ class GetProductsMockMap {
       'weight': 0.200,
       'discount': 10,
       'imagePath':
-          'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg'
+          'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg',
     },
     {
       'id': '523820-gsae124290-as421',

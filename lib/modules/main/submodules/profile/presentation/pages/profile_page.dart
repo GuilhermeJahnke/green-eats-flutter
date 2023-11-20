@@ -44,7 +44,6 @@ class _ProfilePageState extends State<ProfilePage> {
           onPickImageTap: _cubit.onPickImageTap,
           onUpdateTap: _cubit.onUpdateTap,
           onNameChanged: _cubit.onNameChanged,
-          onLastNameChanged: _cubit.onLastNameChanged,
           onEmailChanged: _cubit.onEmailChanged,
           user: state.user,
           isLoading: state.status.isLoading,

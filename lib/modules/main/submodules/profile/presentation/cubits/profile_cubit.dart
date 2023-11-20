@@ -49,7 +49,6 @@ class ProfileCubit extends Cubit<ProfileState> with InitManager {
 
     final result = await updateUserUsecase.updateUser(
       name: state.name,
-      lastName: state.lastName,
       email: state.email,
     );
 
@@ -86,12 +85,6 @@ class ProfileCubit extends Cubit<ProfileState> with InitManager {
   void onNameChanged(String? value) {
     if (value != null && value.isNotEmpty) {
       emit(state.copyWith(name: value));
-    }
-  }
-
-  void onLastNameChanged(String? value) {
-    if (value != null && value.isNotEmpty) {
-      emit(state.copyWith(lastName: value));
     }
   }
 

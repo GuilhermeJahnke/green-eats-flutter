@@ -6,7 +6,6 @@ class UserModel extends User {
   const UserModel({
     required super.id,
     required super.name,
-    required super.lastName,
     required super.email,
     required super.document,
     super.photoUrl,
@@ -18,8 +17,7 @@ class UserModel extends User {
         id: json['id'],
         email: json['email'],
         document: json['document'],
-        name: json['firstName'],
-        lastName: json['lastName'],
+        name: json['name'],
         photoUrl: json['photoUrl'] ?? AppAssets.defaultProfileIcon,
       );
     } catch (error) {

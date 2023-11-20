@@ -15,5 +15,5 @@ class GetAllOrdersMockRequest extends MockRequest {
   int get statusCode => 200;
 
   @override
-  String get url => '/orders/getAll';
+  String get url => '/orders';
 }

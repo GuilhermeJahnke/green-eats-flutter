@@ -1,4 +1,4 @@
-enum MockRequestType { get, post, put, delete }
+enum MockRequestType { get, post, put, delete, patch }
 
 abstract class MockRequest {
   String get url;

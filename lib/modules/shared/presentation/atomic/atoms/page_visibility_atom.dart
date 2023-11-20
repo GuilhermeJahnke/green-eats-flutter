@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef PageView PageViewBuilder(
+typedef PageViewBuilder = PageView Function(
   BuildContext context,
   PageVisibilityResolver visibilityResolver,
 );

@@ -13,7 +13,6 @@ class ProfilePageTemplate extends StatelessWidget {
     super.key,
     required this.onPickImageTap,
     required this.onNameChanged,
-    required this.onLastNameChanged,
     required this.onEmailChanged,
     required this.onUpdateTap,
     required this.user,
@@ -24,7 +23,6 @@ class ProfilePageTemplate extends StatelessWidget {
   final VoidCallback onPickImageTap;
 
   final ValueSetter<String?> onNameChanged;
-  final ValueSetter<String?> onLastNameChanged;
   final ValueSetter<String?> onEmailChanged;
 
   final VoidCallback onUpdateTap;
@@ -64,12 +62,6 @@ class ProfilePageTemplate extends StatelessWidget {
                           label: 'Nome',
                           onChanged: onNameChanged,
                           initialText: user!.name,
-                        ),
-                        TextFieldMolecule(
-                          type: TextFieldType.none,
-                          label: 'Sobrenome',
-                          onChanged: onLastNameChanged,
-                          initialText: user!.lastName,
                         ),
                         TextFieldMolecule(
                           type: TextFieldType.email,

@@ -6,7 +6,6 @@ class ProfileState extends Equatable {
     this.status = Status.initial,
     this.failure,
     this.name,
-    this.lastName,
     this.email,
   });
 
@@ -15,12 +14,10 @@ class ProfileState extends Equatable {
   final User? user;
 
   final String? name;
-  final String? lastName;
   final String? email;
 
   bool get isButtonEnabled =>
       (name?.trim() != null && name?.trim() != user?.name) ||
-      (lastName?.trim() != null && lastName?.trim() != user?.lastName) ||
       (email?.trim() != null && email?.trim() != user?.email);
 
   @override
@@ -29,7 +26,6 @@ class ProfileState extends Equatable {
         status,
         failure,
         name,
-        lastName,
         email,
       ];
 
@@ -38,7 +34,6 @@ class ProfileState extends Equatable {
     Status? status,
     Failure? failure,
     String? name,
-    String? lastName,
     String? email,
   }) {
     return ProfileState(
@@ -46,7 +41,6 @@ class ProfileState extends Equatable {
       status: status ?? this.status,
       failure: failure ?? this.failure,
       name: name ?? this.name,
-      lastName: lastName ?? this.lastName,
       email: email ?? this.email,
     );
   }

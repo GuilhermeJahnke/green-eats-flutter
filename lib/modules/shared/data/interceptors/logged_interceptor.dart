@@ -21,7 +21,8 @@ class LoggedInterceptor implements Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    if (err.type == DioErrorType.response && err.response?.statusCode == HttpStatus.unauthorized) {
+    if (err.type == DioErrorType.response &&
+        err.response?.statusCode == HttpStatus.unauthorized) {
       onUnauthorized?.call();
     }
 
@@ -29,16 +30,22 @@ class LoggedInterceptor implements Interceptor {
   }
 
   @override
-  Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     _cookie = await getCookieUsecase.getCookie();
 
-    options.headers['Cookie'] = _cookie;
+    options.headers['Authorization'] = 'Bearer $_cookie';
 
     return handler.next(options);
   }
 
   @override
-  Future<void> onResponse(Response response, ResponseInterceptorHandler handler) async {
+  Future<void> onResponse(
+    Response response,
+    ResponseInterceptorHandler handler,
+  ) async {
     final cookie = response.headers.map['set-cookie']?.first;
 
     if (cookie != null) {

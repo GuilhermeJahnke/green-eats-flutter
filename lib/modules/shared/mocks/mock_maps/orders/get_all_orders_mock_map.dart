@@ -11,7 +11,7 @@ class GetAllOrdersMockMap {
           'https://static.vecteezy.com/ti/vetor-gratis/p1/17319541-construcao-da-loja-e-ilustracao-do-icone-do-dos-desenhos-animados-do-caminhao-de-entrega-conceito-de-icone-de-construcao-de-negocios-isolado-premium-estilo-cartoon-plana-vetor.jpg',
       'quantity': 2,
       'status': 'inProgress',
-      'date': '2023-11-14T12:30:00',
+      'updated_at': '2023-11-14T12:30:00',
     },
     {
       'id': '125214-12423-213',
@@ -20,7 +20,7 @@ class GetAllOrdersMockMap {
           'https://static.vecteezy.com/ti/vetor-gratis/p1/17319541-construcao-da-loja-e-ilustracao-do-icone-do-dos-desenhos-animados-do-caminhao-de-entrega-conceito-de-icone-de-construcao-de-negocios-isolado-premium-estilo-cartoon-plana-vetor.jpg',
       'quantity': 2,
       'status': 'pending',
-      'date': '2023-11-14T12:30:00',
+      'updated_at': '2023-11-14T12:30:00',
     },
     {
       'id': '125214-23251-213',
@@ -29,7 +29,7 @@ class GetAllOrdersMockMap {
           'https://static.vecteezy.com/ti/vetor-gratis/p1/17319541-construcao-da-loja-e-ilustracao-do-icone-do-dos-desenhos-animados-do-caminhao-de-entrega-conceito-de-icone-de-construcao-de-negocios-isolado-premium-estilo-cartoon-plana-vetor.jpg',
       'quantity': 2,
       'status': 'rejected',
-      'date': '2023-11-14T12:30:00',
+      'updated_at': '2023-11-14T12:30:00',
     },
     {
       'id': '125214-215123-213',
@@ -38,7 +38,7 @@ class GetAllOrdersMockMap {
           'https://static.vecteezy.com/ti/vetor-gratis/p1/17319541-construcao-da-loja-e-ilustracao-do-icone-do-dos-desenhos-animados-do-caminhao-de-entrega-conceito-de-icone-de-construcao-de-negocios-isolado-premium-estilo-cartoon-plana-vetor.jpg',
       'quantity': 2,
       'status': 'delivered',
-      'date': '2023-11-14T12:30:00',
+      'updated_at': '2023-11-14T12:30:00',
     },
   ];
 }

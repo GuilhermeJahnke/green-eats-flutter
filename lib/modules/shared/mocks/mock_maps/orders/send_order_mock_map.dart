@@ -12,7 +12,7 @@ class SendOrderMockMap {
         'weight': 0.200,
         'discount': 10,
         'imagePath':
-            'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg'
+            'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
       },
       {
         'id': '5213w3523-51-6434-2',
@@ -23,7 +23,7 @@ class SendOrderMockMap {
         'weight': 0.200,
         'discount': 10,
         'imagePath':
-            'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg'
+            'https://img.freepik.com/vetores-gratis/ilustracao-de-comida-kawaii-desenhada-a-mao_52683-84890.jpg',
       },
       {
         'id': '523820-gsae124290-as421',
@@ -46,6 +46,6 @@ class SendOrderMockMap {
         'https://static.vecteezy.com/ti/vetor-gratis/p1/17319541-construcao-da-loja-e-ilustracao-do-icone-do-dos-desenhos-animados-do-caminhao-de-entrega-conceito-de-icone-de-construcao-de-negocios-isolado-premium-estilo-cartoon-plana-vetor.jpg',
     'quantity': 2,
     'status': 'inProgress',
-    'date': '2023-11-14T12:30:00',
+    'updated_at': '2023-11-14T12:30:00',
   };
 }

@@ -21,7 +21,7 @@ class PickUserShimmerMolecule extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
-              child: SizedBox.expand(),
+              child: const SizedBox.expand(),
             ),
           ),
         ),

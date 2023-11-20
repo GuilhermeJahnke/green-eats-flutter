@@ -6,7 +6,7 @@ class UpdateProfileMockRequest extends MockRequest {
   Map<String, dynamic>? get body => UpdateProfileMockMap.body;
 
   @override
-  MockRequestType get method => MockRequestType.put;
+  MockRequestType get method => MockRequestType.patch;
 
   @override
   Map<String, dynamic>? get response => UpdateProfileMockMap.response;
@@ -15,5 +15,5 @@ class UpdateProfileMockRequest extends MockRequest {
   int get statusCode => 200;
 
   @override
-  String get url => '/profile/update';
+  String get url => '/users';
 }

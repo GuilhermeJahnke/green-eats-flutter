@@ -16,12 +16,12 @@ class MockManager {
     '/auth/sign-in': SignInMockRequest(),
     '/auth/sign-up': SignUpMockRequest(),
     '/category/getAll': GetCategoryMockRequest(),
-    '/products/getAll': GetProductsMockRequest(),
+    '/products': GetProductsMockRequest(),
     '/products/getAllDiscount': GetDiscountProductsMockRequest(),
-    '/profile/update': UpdateProfileMockRequest(),
+    '/users': UpdateProfileMockRequest(),
     '/products/getAllByCategory': GetProductsByCategoryMockRequest(),
-    '/orders/getAll': GetAllOrdersMockRequest(),
-    '/orders/send': SendOrderMockRequest(),
+    // '/orders': GetAllOrdersMockRequest(),
+    // '/orders': SendOrderMockRequest(),
   };
 
   MockRequest? getMock(String url) {

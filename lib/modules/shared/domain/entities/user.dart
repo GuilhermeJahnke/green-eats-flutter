@@ -9,7 +9,6 @@ class User {
   const User({
     required this.id,
     required this.name,
-    required this.lastName,
     required this.email,
     required this.document,
     this.photoUrl = AppAssets.defaultProfileIcon,
@@ -20,12 +19,10 @@ class User {
   @HiveField(1)
   final String name;
   @HiveField(2)
-  final String lastName;
-  @HiveField(3)
   final String email;
-  @HiveField(4)
+  @HiveField(3)
   final String document;
-  @HiveField(5)
+  @HiveField(4)
   final String photoUrl;
 
   User copyWith({
@@ -39,7 +36,6 @@ class User {
     return User(
       id: id ?? this.id,
       name: name ?? this.name,
-      lastName: lastName ?? this.lastName,
       email: email ?? this.email,
       document: document ?? this.document,
       photoUrl: photoUrl ?? this.photoUrl,

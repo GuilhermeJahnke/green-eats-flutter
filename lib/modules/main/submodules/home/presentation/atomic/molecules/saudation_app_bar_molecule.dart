@@ -88,7 +88,7 @@ class SaudationAppBarMolecule extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              '${user!.name} ${user!.lastName}',
+              user!.name,
               style: AppTextStyle.subtitleRegular,
             ),
           ],
