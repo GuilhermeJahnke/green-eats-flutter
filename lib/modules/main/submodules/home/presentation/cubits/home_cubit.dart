@@ -11,7 +11,6 @@ import '../../../../../shared/domain/entities/user.dart';
 import '../../../../../shared/domain/errors/failures/failure.dart';
 import '../../../../../shared/domain/usecases/get_categories_usecase.dart';
 import '../../../../../shared/domain/usecases/get_current_user_usecase.dart';
-import '../../../../../shared/domain/usecases/get_discount_products_usecase.dart';
 import '../../../../../shared/domain/usecases/get_products_usecase.dart';
 import '../../../../main_navigator.dart';
 import '../../../cart/presentation/cubits/cart_cubit.dart';
@@ -23,7 +22,6 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
     required this.mainNavigator,
     required this.cartManager,
     required this.getCurrentUsecase,
-    required this.getDiscountProductsUsecase,
     required this.getCategoriesUsecase,
     required this.getProductsUsecase,
   }) : super(const HomeState());
@@ -32,7 +30,6 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
   final CartManager cartManager;
   final CartCubit cartCubit = Modular.get<CartCubit>();
   final GetCurrentUserUsecase getCurrentUsecase;
-  final GetDiscountProductsUsecase getDiscountProductsUsecase;
   final GetCategoriesUsecase getCategoriesUsecase;
   final GetProductsUsecase getProductsUsecase;
 
@@ -42,7 +39,6 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
 
     Future.wait([
       _getCurrentUser(),
-      _getDiscountProducts(),
       _getCategories(),
       _getProducts(),
     ]);
@@ -86,27 +82,6 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
     );
   }
 
-  Future<void> _getDiscountProducts() async {
-    emit(state.copyWith(discountProductsStatus: Status.loading));
-
-    final result = await getDiscountProductsUsecase.getDiscountProducts();
-
-    result.fold(
-      (failure) => emit(
-        state.copyWith(
-          discountProductsStatus: Status.failure,
-          discountProductsFailure: failure,
-        ),
-      ),
-      (products) => emit(
-        state.copyWith(
-          discountProducts: products,
-          discountProductsStatus: Status.success,
-        ),
-      ),
-    );
-  }
-
   Future<void> _getCategories() async {
     emit(state.copyWith(categoriesStatus: Status.loading));
 
@@ -143,6 +118,11 @@ class HomeCubit extends Cubit<HomeState> with InitManager {
       (products) => emit(
         state.copyWith(
           products: products,
+          discountProducts: products
+              .where((product) => product.discount > 0)
+              .toList()
+              .take(3)
+              .toList(),
           productsStatus: Status.success,
         ),
       ),

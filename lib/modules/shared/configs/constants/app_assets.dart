@@ -18,6 +18,8 @@ class AppAssets {
 
   static const String emptyOrders = '$_imagesPath/empty_orders.png';
 
+  static const String emptyCategories = '$_imagesPath/empty_categories.png';
+
   // Assets
   static const String splashScreenLogo = '$_svgPath/splash_logo.svg';
   static const String authenticationPageLogo =

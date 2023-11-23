@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../shared/domain/entities/category.dart';
+import '../../../../../../shared/presentation/atomic/molecules/empty_data_molecule.dart';
 import '../molecules/category_item_molecule.dart';
 
 class CategoryBuilderOrganism extends StatelessWidget {
@@ -15,6 +16,13 @@ class CategoryBuilderOrganism extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (categoryList.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(20.0),
+        child: EmptyDataMolecule.category(),
+      );
+    }
+
     return SizedBox(
       height: 140,
       child: ListView.builder(

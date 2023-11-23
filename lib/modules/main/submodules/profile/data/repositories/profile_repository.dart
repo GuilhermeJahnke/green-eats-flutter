@@ -14,14 +14,14 @@ class ProfileRepository implements UpdateUserUsecase {
 
   @override
   Future<Either<Failure, User>> updateUser({
+    required String userId,
     String? name,
-    String? lastName,
     String? email,
   }) async {
     try {
       final result = await remoteDatasource.updateUser(
+        userId: userId,
         name: name,
-        lastName: lastName,
         email: email,
       );
 

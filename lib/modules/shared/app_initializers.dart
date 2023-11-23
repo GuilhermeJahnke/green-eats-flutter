@@ -11,5 +11,6 @@ class AppInitializers {
     Hive.registerAdapter<User>(UserAdapter());
     await Hive.openBox(HiveBoxStrings.userBoxName);
     await Hive.openBox(HiveBoxStrings.currentUserBoxName);
+    await Hive.openBox(HiveBoxStrings.cookieBoxName);
   }
 }

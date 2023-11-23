@@ -4,35 +4,16 @@ import '../../domain/entities/category.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/errors/failures/failure.dart';
 import '../../domain/usecases/get_categories_usecase.dart';
-import '../../domain/usecases/get_discount_products_usecase.dart';
 import '../../domain/usecases/get_products_usecase.dart';
 import '../datasources/remote_datasource/remote_datasource.dart';
 
 class SharedRemoteRepository
-    implements
-        GetDiscountProductsUsecase,
-        GetCategoriesUsecase,
-        GetProductsUsecase {
+    implements GetCategoriesUsecase, GetProductsUsecase {
   const SharedRemoteRepository({
     required this.remoteDatasource,
   });
 
   final SharedRemoteDatasource remoteDatasource;
-
-  @override
-  Future<Either<Failure, List<Product>>> getDiscountProducts() async {
-    try {
-      final products = await remoteDatasource.getDiscountProducts();
-
-      return Right(products);
-    } catch (error) {
-      return Left(
-        Failure(
-          exception: error,
-        ),
-      );
-    }
-  }
 
   @override
   Future<Either<Failure, List<Category>>> getCategories() async {

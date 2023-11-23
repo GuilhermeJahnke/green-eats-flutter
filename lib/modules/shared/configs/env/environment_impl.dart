@@ -16,7 +16,8 @@ class HmgEnvironment implements Environment {
   final String suffix = 'hmg';
 
   @override
-  final String baseUrl = '';
+  final String baseUrl =
+      'http://ec2-100-24-12-220.compute-1.amazonaws.com:3000';
 
   @override
   final bool isMock = false;

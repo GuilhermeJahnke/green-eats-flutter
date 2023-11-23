@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../main/submodules/orders/presentation/entities/string_extension.dart';
 import '../../mocks/mock_manager.dart';
 import '../../mocks/mock_request.dart';
 
@@ -14,7 +15,8 @@ class MockInterceptor implements Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     final MockRequest? mock = MockManager().getMock(
-      options.path,
+      path: options.path,
+      requestType: options.method.httpMethod,
     );
 
     if (mock != null) {

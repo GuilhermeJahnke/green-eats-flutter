@@ -17,7 +17,6 @@ class HomeModule extends Module {
             mainNavigator: i(),
             cartManager: CartManager.instance,
             getCurrentUsecase: i(),
-            getDiscountProductsUsecase: i(),
             getCategoriesUsecase: i(),
             getProductsUsecase: i(),
           ),

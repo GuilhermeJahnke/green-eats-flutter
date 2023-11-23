@@ -3,4 +3,5 @@ class HiveBoxStrings {
 
   static const String userBoxName = 'userBox';
   static const String currentUserBoxName = 'currentUserBox';
+  static const String cookieBoxName = 'cookieBox';
 }

@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import '../../../../shared/configs/data/network/app_network.dart';
 import '../../../../shared/data/dio/not_logged_dio.dart';
 import '../../../../shared/data/models/user_model.dart';
@@ -20,19 +22,23 @@ class AuthenticationRemoteDatasourceImpl
     required String email,
     required String password,
   }) async {
-    final response = await _notLoggedDio.post(
-      _appNetwork.signIn,
-      data: {
-        'email': email,
-        'password': password,
-      },
-    );
+    try {
+      final response = await _notLoggedDio.post(
+        _appNetwork.signIn,
+        data: {
+          'email': email,
+          'password': password,
+        },
+      );
 
-    final user = UserModel.fromJson(
-      response.data,
-    );
+      final user = UserModel.fromJson(
+        response.data,
+      );
 
-    return user;
+      return user;
+    } on DioError catch (_) {
+      throw Exception('Email ou senha inválidos');
+    }
   }
 
   @override

@@ -15,5 +15,5 @@ class UpdateProfileMockRequest extends MockRequest {
   int get statusCode => 200;
 
   @override
-  String get url => '/users';
+  String get url => '/users/';
 }

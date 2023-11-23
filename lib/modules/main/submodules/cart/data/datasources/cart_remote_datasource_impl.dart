@@ -1,6 +1,7 @@
 import '../../../../../shared/configs/data/network/app_network.dart';
 import '../../../../../shared/data/dio/logged_dio.dart';
 import '../../../../../shared/domain/entities/product.dart';
+import '../../../../../shared/domain/entities/user.dart';
 import 'cart_remote_datasource.dart';
 
 class CartRemoteDatasourceImpl implements CartRemoteDatasource {
@@ -13,11 +14,24 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   final AppNetwork appNetwork;
 
   @override
-  Future<void> sendOrder(List<Product> products) async {
+  Future<void> sendOrder({
+    required User user,
+    required List<Product> products,
+  }) async {
+    final List<Map<String, dynamic>> productsJson = products
+        .map(
+          (product) => {
+            'id': product.id,
+            'quantity': product.quantity,
+          },
+        )
+        .toList();
+
     await loggedDio.post(
       appNetwork.sendOrder,
       data: {
-        'products': products.map((product) => product.toJson()).toList(),
+        'user': user.id,
+        'products': productsJson,
       },
     );
 

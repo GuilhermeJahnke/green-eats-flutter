@@ -18,19 +18,6 @@ class SharedRemoteDatasourceImpl implements SharedRemoteDatasource {
   final AppNetwork appNetwork;
 
   @override
-  Future<List<Product>> getDiscountProducts() async {
-    final response = await loggedDio.get(
-      appNetwork.getDiscountProducts,
-    );
-
-    final List<Product> products = (response.data as List)
-        .map((product) => ProductModel.fromJson(product))
-        .toList();
-
-    return products;
-  }
-
-  @override
   Future<List<Category>> getCategories() async {
     final response = await loggedDio.get(
       appNetwork.getCategories,

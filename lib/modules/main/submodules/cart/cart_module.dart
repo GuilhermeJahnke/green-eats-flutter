@@ -36,6 +36,7 @@ class CartModule extends Module {
             cartManager: CartManager.instance,
             mainNavigator: i(),
             sendOrderUsecase: i(),
+            getCurrentUserUsecase: i(),
           ),
           export: true,
         ),

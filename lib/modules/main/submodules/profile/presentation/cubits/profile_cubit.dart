@@ -48,6 +48,7 @@ class ProfileCubit extends Cubit<ProfileState> with InitManager {
     emit(state.copyWith(status: Status.loading));
 
     final result = await updateUserUsecase.updateUser(
+      userId: state.user!.id,
       name: state.name,
       email: state.email,
     );

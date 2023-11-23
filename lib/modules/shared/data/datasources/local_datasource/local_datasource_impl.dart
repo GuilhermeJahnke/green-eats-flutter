@@ -8,19 +8,31 @@ import 'local_datasource.dart';
 class LocalDatasourceImpl implements LocalDatasource {
   final userbox = Hive.box(HiveBoxStrings.userBoxName);
   final currentUserBox = Hive.box(HiveBoxStrings.currentUserBoxName);
+  final cookieBox = Hive.box(HiveBoxStrings.cookieBoxName);
 
   @override
   Future<String?> getCookie() async {
-    debugPrint('Get Cookie');
+    try {
+      final String? cookie = cookieBox.get('Cookie');
 
-    return 'Oi';
+      return cookie;
+    } catch (error) {
+      rethrow;
+    }
   }
 
   @override
   Future<void> setCookie(String cookie) async {
-    debugPrint('Set Cookie');
+    try {
+      debugPrint('Saving cookie...');
+      await cookieBox.put('Cookie', cookie);
 
-    return;
+      debugPrint('Cookie updated successfully ✅');
+
+      return;
+    } catch (error) {
+      rethrow;
+    }
   }
 
   @override

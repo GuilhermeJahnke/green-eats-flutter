@@ -17,10 +17,10 @@ class CategoryRemoteDatasourceImpl implements CategoryRemoteDatasource {
 
   @override
   Future<List<Product>> getProductsByCategory(String categoryId) async {
-    final response = await loggedDio.post(
-      appNetwork.getAllByCategory,
-      data: {
-        'id': categoryId,
+    final response = await loggedDio.get(
+      appNetwork.getProducts,
+      queryParameters: {
+        'category': categoryId,
       },
     );
 

@@ -4,6 +4,7 @@ import '../../../configs/constants/app_text_style.dart';
 import '../../../domain/entities/product.dart';
 import '../atoms/page_visibility_atom.dart';
 import '../molecules/card_content_molecule.dart';
+import '../molecules/empty_data_molecule.dart';
 
 class DiscountProductsOrganism extends StatelessWidget {
   const DiscountProductsOrganism({
@@ -17,6 +18,13 @@ class DiscountProductsOrganism extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (itemsList.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(20.0),
+        child: EmptyDataMolecule.discountProduct(),
+      );
+    }
+
     return SizedBox.fromSize(
       size: const Size.fromHeight(160),
       child: PageTransformer(

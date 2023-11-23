@@ -5,7 +5,9 @@ import '../../../../../shared/domain/entities/cart_manager.dart';
 import '../../../../../shared/domain/entities/init_manager.dart';
 import '../../../../../shared/domain/entities/product.dart';
 import '../../../../../shared/domain/entities/status.dart';
+import '../../../../../shared/domain/entities/user.dart';
 import '../../../../../shared/domain/errors/failures/failure.dart';
+import '../../../../../shared/domain/usecases/get_current_user_usecase.dart';
 import '../../../../main_navigator.dart';
 import '../../domain/usecases/send_order_usecase.dart';
 
@@ -16,15 +18,18 @@ class CartCubit extends Cubit<CartState> with InitManager {
     required this.cartManager,
     required this.mainNavigator,
     required this.sendOrderUsecase,
+    required this.getCurrentUserUsecase,
   }) : super(const CartState());
 
   final CartManager cartManager;
   final MainNavigator mainNavigator;
   final SendOrderUsecase sendOrderUsecase;
+  final GetCurrentUserUsecase getCurrentUserUsecase;
 
   @override
   void init() {
     cartManager.addListener(_onCartChangeListener);
+    _getCurrentUser();
   }
 
   void _onCartChangeListener() {
@@ -47,6 +52,18 @@ class CartCubit extends Cubit<CartState> with InitManager {
     _sendOrder();
   }
 
+  Future<void> _getCurrentUser() async {
+    final user = await getCurrentUserUsecase.getCurrentUser();
+
+    if (user != null) {
+      emit(
+        state.copyWith(
+          user: user,
+        ),
+      );
+    }
+  }
+
   Future<void> _sendOrder() async {
     emit(
       state.copyWith(
@@ -54,7 +71,10 @@ class CartCubit extends Cubit<CartState> with InitManager {
       ),
     );
 
-    final failureOrSuccess = await sendOrderUsecase(state.products);
+    final failureOrSuccess = await sendOrderUsecase(
+      user: state.user!,
+      products: state.products,
+    );
 
     failureOrSuccess.fold(
       (failure) {

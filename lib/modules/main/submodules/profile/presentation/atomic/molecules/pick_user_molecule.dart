@@ -33,22 +33,25 @@ class PickUserMolecule extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: InkWell(
-            onTap: onPickImageTap,
-            borderRadius: BorderRadius.circular(100),
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: const Icon(
-                Icons.camera_alt,
-                color: Colors.white,
+        Visibility(
+          visible: false,
+          child: Positioned(
+            bottom: 0,
+            right: 0,
+            child: InkWell(
+              onTap: onPickImageTap,
+              borderRadius: BorderRadius.circular(100),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: const Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

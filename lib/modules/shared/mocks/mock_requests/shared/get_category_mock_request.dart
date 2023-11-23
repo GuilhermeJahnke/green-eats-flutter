@@ -15,5 +15,5 @@ class GetCategoryMockRequest extends MockRequest {
   int get statusCode => 200;
 
   @override
-  String get url => '/category/getAll';
+  String get url => '/categories';
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../domain/entities/product.dart';
 import '../../../utils/mixins/interable_mixin.dart';
 import '../../../utils/utils.dart';
+import '../molecules/empty_data_molecule.dart';
 import '../molecules/product_card_molecule.dart';
 
 class ProductCardBuilderOrganism extends StatelessWidget {
@@ -49,6 +50,13 @@ class ProductCardBuilderOrganism extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (productList.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.only(top: 20.0),
+        child: EmptyDataMolecule.product(),
+      );
+    }
+
     final termGroups = _buildTermGroups(productList);
 
     return Column(

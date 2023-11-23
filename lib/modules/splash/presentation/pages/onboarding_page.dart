@@ -68,6 +68,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               Expanded(
                 child: Image.asset(
                   AppAssets.onboardingPageBackground,
+                  width: double.infinity,
                 ),
               ),
             ],

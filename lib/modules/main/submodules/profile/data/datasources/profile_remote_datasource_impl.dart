@@ -15,8 +15,8 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
 
   @override
   Future<User> updateUser({
+    required String userId,
     String? name,
-    String? lastName,
     String? email,
   }) async {
     final Map<String, dynamic> body = {};
@@ -25,17 +25,16 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
       body['name'] = name;
     }
 
-    if (lastName != null) {
-      body['last_name'] = lastName;
-    }
-
     if (email != null) {
       body['email'] = email;
     }
 
-    final response = await loggedDio.put(
-      appNetwork.updateProfile,
+    final response = await loggedDio.patch(
+      '${appNetwork.updateProfile}$userId',
       data: body,
+      // queryParameters: {
+      //   'id': userId,
+      // },
     );
 
     return UserModel.fromJson(response.data);

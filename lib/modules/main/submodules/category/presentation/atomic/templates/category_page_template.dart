@@ -4,6 +4,7 @@ import '../../../../../../shared/configs/constants/app_text_style.dart';
 import '../../../../../../shared/domain/entities/category.dart';
 import '../../../../home/presentation/atomic/molecules/section_title_molecule.dart';
 import '../../../../home/presentation/atomic/molecules/shimmers/section_title_shimmer_molecule.dart';
+import '../molecules/empty_categories_molecule.dart';
 import '../organisms/category_card_builder_organism.dart';
 import '../organisms/shimmers/category_card_shimmer_builder_organism.dart';
 
@@ -40,7 +41,9 @@ class CategoryPageTemplate extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(20.0),
                     child: CategoryCardShimmerBuilderOrganism(),
-                  )
+                  ),
+                if (categoryList.isEmpty)
+                  const EmptyCategoriesMolecule()
                 else
                   Padding(
                     padding: const EdgeInsets.all(20.0),
