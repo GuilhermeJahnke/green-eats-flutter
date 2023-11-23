@@ -42,12 +42,6 @@ class AuthenticationRemoteDatasourceImpl
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
-
-  @override
   Future<User> signUp({
     required String name,
     required String lastName,

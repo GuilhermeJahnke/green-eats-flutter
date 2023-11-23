@@ -48,6 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
           user: state.user,
           isLoading: state.status.isLoading,
           isButtonEnabled: state.isButtonEnabled,
+          onLogoutTap: _cubit.onLogoutTap,
         );
       },
     );

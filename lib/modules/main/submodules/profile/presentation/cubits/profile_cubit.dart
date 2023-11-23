@@ -1,10 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../authentication/authentication_module.dart';
 import '../../../../../shared/domain/entities/init_manager.dart';
 import '../../../../../shared/domain/entities/status.dart';
 import '../../../../../shared/domain/entities/user.dart';
 import '../../../../../shared/domain/errors/failures/failure.dart';
+import '../../../../../shared/domain/usecases/clear_user_usecase.dart';
 import '../../../../../shared/domain/usecases/get_current_user_usecase.dart';
 import '../../../../../shared/domain/usecases/update_hive_user_usecase.dart';
 import '../../domain/usecases/update_user_usecase.dart';
@@ -16,11 +19,13 @@ class ProfileCubit extends Cubit<ProfileState> with InitManager {
     required this.getCurrentUserUsecase,
     required this.updateHiveUserUsecase,
     required this.updateUserUsecase,
+    required this.clearUserUsecase,
   }) : super(const ProfileState());
 
   final GetCurrentUserUsecase getCurrentUserUsecase;
   final UpdateHiveUserUsecase updateHiveUserUsecase;
   final UpdateUserUsecase updateUserUsecase;
+  final ClearUserUsecase clearUserUsecase;
 
   @override
   void init() {
@@ -97,5 +102,11 @@ class ProfileCubit extends Cubit<ProfileState> with InitManager {
 
   void onUpdateTap() {
     _updateUser();
+  }
+
+  void onLogoutTap() {
+    clearUserUsecase.clearUser();
+
+    Modular.to.navigate(AuthenticationModule.moduleName);
   }
 }

@@ -31,6 +31,7 @@ class ProfileModule extends Module {
             getCurrentUserUsecase: i(),
             updateUserUsecase: i(),
             updateHiveUserUsecase: i(),
+            clearUserUsecase: i(),
           ),
           export: true,
         ),

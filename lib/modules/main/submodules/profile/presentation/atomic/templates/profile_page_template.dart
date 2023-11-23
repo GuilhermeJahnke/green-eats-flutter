@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../../../shared/configs/constants/app_text_style.dart';
 import '../../../../../../shared/domain/entities/user.dart';
 import '../../../../../../shared/presentation/atomic/molecules/buttom_molecule.dart';
 import '../../../../../../shared/presentation/atomic/molecules/text_field_molecule.dart';
@@ -15,12 +16,14 @@ class ProfilePageTemplate extends StatelessWidget {
     required this.onNameChanged,
     required this.onEmailChanged,
     required this.onUpdateTap,
+    required this.onLogoutTap,
     required this.user,
     required this.isLoading,
     required this.isButtonEnabled,
   });
 
   final VoidCallback onPickImageTap;
+  final VoidCallback onLogoutTap;
 
   final ValueSetter<String?> onNameChanged;
   final ValueSetter<String?> onEmailChanged;
@@ -75,6 +78,32 @@ class ProfilePageTemplate extends StatelessWidget {
                           onChanged: (_) {},
                           isEnabled: false,
                           initialText: user!.document,
+                        ),
+                        InkWell(
+                          onTap: onLogoutTap,
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.exit_to_app,
+                                    color: Colors.red,
+                                  ),
+                                  SizedBox(width: 10.0),
+                                  Text(
+                                    'Sair da conta',
+                                    style: AppTextStyle.subtitleRegular,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ].addSeparators(const SizedBox(height: 20.0)),
