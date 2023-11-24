@@ -1,5 +1,4 @@
 import '../../domain/entities/order.dart';
-import 'order_status_model.dart';
 
 class OrderModel extends Order {
   OrderModel({
@@ -11,12 +10,23 @@ class OrderModel extends Order {
     required super.date,
   });
 
-  factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
-        id: json['id'],
-        price: json['price'],
-        establishmentImage: json['establishmentImage'],
-        quantity: json['quantity'],
-        status: OrderStatusModel.fromJson(json['status']),
-        date: DateTime.parse(json['updated_at']),
-      );
+  factory OrderModel.fromJson(Map<String, dynamic> json) {
+    double quantity = 0;
+    double price = 0.0;
+
+    for (var product in json['products']) {
+      price += product['product']['price'] * product['quantity'];
+      quantity += product['quantity'];
+    }
+
+    return OrderModel(
+      id: json['id'],
+      price: price,
+      establishmentImage:
+          'https://img.freepik.com/vetores-gratis/ilustracao-de-preparacao-de-refeicao-de-design-plano-desenhado-a-mao_23-2149350982.jpg',
+      quantity: quantity.ceil(),
+      status: OrderStatus.inProgress,
+      date: DateTime.parse(json['updated_at']),
+    );
+  }
 }

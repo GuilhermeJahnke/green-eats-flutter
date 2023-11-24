@@ -48,11 +48,6 @@ class OrderMolecule extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '#$orderNumber',
-                    style: AppTextStyle.subtitleBold,
-                  ),
-                  const SizedBox(height: 10.0),
-                  Text(
                     Utils.formatCurrency(totalValue),
                     style: AppTextStyle.subtitleBold,
                   ),

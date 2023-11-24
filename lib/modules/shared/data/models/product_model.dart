@@ -22,7 +22,7 @@ class ProductModel extends Product {
         price: json['price'],
         weight: json['weight'],
         discount: json['discount'],
-        imagePath: json['imagePath'],
+        imagePath: json['image_url'],
       );
     } catch (error) {
       throw ParseException(

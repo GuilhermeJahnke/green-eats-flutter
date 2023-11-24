@@ -13,7 +13,7 @@ class CategoryModel extends Category {
       return CategoryModel(
         id: json['id'],
         title: json['title'],
-        imagePath: json['imagePath'],
+        imagePath: json['image_url'],
       );
     } catch (error) {
       throw ParseException(
