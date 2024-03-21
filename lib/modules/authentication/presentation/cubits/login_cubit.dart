@@ -78,8 +78,8 @@ class LoginCubit extends Cubit<LoginState> {
     _sharedNavigator.openMainModule();
   }
 
-  void onLoginTap() {
-    _signIn();
+  Future<void> onLoginTap() async {
+    await _signIn();
   }
 
   void onSignUpTap() {
